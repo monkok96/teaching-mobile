@@ -7,9 +7,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.teachinghelper.Questions.QuestionListAdapter
+import com.example.teachinghelper.ViewModels.QuestionViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var questionsViewModel: QuestionViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,7 +30,24 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
+
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val adapter = QuestionListAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        questionsViewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
+
+        questionsViewModel.allQuestions.observe(this, Observer { questions ->
+            // Update the cached copy of the words in the adapter.
+            questions?.let { adapter.setQuestions(it) }
+        })
+
+
     }
 }
