@@ -11,12 +11,9 @@ class QuestionViewModel (application: Application) : AndroidViewModel(applicatio
 
     // The ViewModel maintains a reference to the repository to get data.
     private val repository: QuestionRepository
-    // LiveData gives us updated words when they change.
     val allQuestions: List<QuestionAllInfo>
 
     init {
-        // Gets reference to WordDao from WordRoomDatabase to construct
-        // the correct WordRepository.
         val questionsDao = AppDatabase.getDatabase(application, viewModelScope).questionDao()
         repository = QuestionRepository(questionsDao)
         allQuestions = repository.allQuestionsWithAreas
