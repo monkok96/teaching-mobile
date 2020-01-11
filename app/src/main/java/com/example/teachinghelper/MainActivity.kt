@@ -14,6 +14,7 @@ import com.example.teachinghelper.ViewModels.QuestionViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     private lateinit var questionsViewModel: QuestionViewModel
@@ -43,10 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         questionsViewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
 
-        questionsViewModel.allQuestions.observe(this, Observer { questions ->
-            // Update the cached copy of the words in the adapter.
-            questions?.let { adapter.setQuestions(it) }
-        })
+        try {
+            adapter.setQuestions((questionsViewModel.allQuestions))
+//            questionsViewModel.allQuestions.observe(this, Observer { questions ->
+//                // Update the cached copy of the words in the adapter.
+//                questions?.let { adapter.setQuestions(it) }
+//            })
+        } catch(ex: Exception) {}
 
 
     }

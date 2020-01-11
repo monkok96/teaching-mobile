@@ -2,25 +2,24 @@ package com.example.teachinghelper.ViewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import com.example.teachinghelper.Database.AppDatabase
-import com.example.teachinghelper.Entities.Question
 import com.example.teachinghelper.Repositories.QuestionRepository
 import androidx.lifecycle.viewModelScope
+import com.example.teachinghelper.readmodel.QuestionAllInfo
 
 class QuestionViewModel (application: Application) : AndroidViewModel(application) {
 
     // The ViewModel maintains a reference to the repository to get data.
     private val repository: QuestionRepository
     // LiveData gives us updated words when they change.
-    val allQuestions: LiveData<List<Question>>
+    val allQuestions: List<QuestionAllInfo>
 
     init {
         // Gets reference to WordDao from WordRoomDatabase to construct
         // the correct WordRepository.
-        val wordsDao = AppDatabase.getDatabase(application, viewModelScope).questionDao()
-        repository = QuestionRepository(wordsDao)
-        allQuestions = repository.allQuestions
+        val questionsDao = AppDatabase.getDatabase(application, viewModelScope).questionDao()
+        repository = QuestionRepository(questionsDao)
+        allQuestions = repository.allQuestionsWithAreas
     }
 
     /**

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teachinghelper.Entities.Question
 import com.example.teachinghelper.R
+import com.example.teachinghelper.readmodel.QuestionAllInfo
 
 class QuestionListAdapter internal constructor(
     context: Context
@@ -15,7 +16,7 @@ class QuestionListAdapter internal constructor(
 
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var questions = emptyList<Question>() // Cached copy of words
+    private var questions = emptyList<QuestionAllInfo>() // Cached copy of words
 
     inner class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val questionItemView: TextView = itemView.findViewById(R.id.textView)
@@ -28,10 +29,10 @@ class QuestionListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val current = questions[position]
-        holder.questionItemView.text = current.content
+        holder.questionItemView.text = current.content + " " + current.areaName
     }
 
-    internal fun setQuestions(questions: List<Question>) {
+    internal fun setQuestions(questions: List<QuestionAllInfo>) {
         this.questions = questions
         notifyDataSetChanged()
     }

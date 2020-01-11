@@ -4,17 +4,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.teachinghelper.Entities.Area
+import com.example.teachinghelper.Entities.Subject
 
 @Dao
-interface AreaDao {
-    @Query("SELECT * FROM areas")
-    fun getAll(): List<Area>
+interface SubjectDao {
+    @Query("SELECT * FROM subjects")
+    fun getAll(): List<Subject>
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(area: Area)
+    suspend fun insert(subject: Subject)
 
-    @Query("DELETE FROM areas")
+    @Query("DELETE FROM subjects")
     suspend fun deleteAll()
 }
