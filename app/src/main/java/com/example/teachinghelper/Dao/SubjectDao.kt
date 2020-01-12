@@ -20,4 +20,7 @@ interface SubjectDao {
 
     @Query ("SELECT * FROM subjects s WHERE  s.name=:name")
     fun getByName(name: String): Subject
+
+    @Query("SELECT * FROM subjects s WHERE s.id=:id")
+    fun getById(id: Int):Subject
 }

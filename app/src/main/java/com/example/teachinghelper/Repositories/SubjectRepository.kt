@@ -10,4 +10,8 @@ class SubjectRepository(private val subjectDao: SubjectDao) {
     fun getByName(name: String) : Subject {
         return subjectDao.getByName(name)
     }
+
+    fun getById(id: Int): Subject {
+        return subjectDao.getById(id)
+    }
 }

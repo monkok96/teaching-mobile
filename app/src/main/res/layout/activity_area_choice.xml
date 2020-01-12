@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/container"-->
 <!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="match_parent"-->
+<!--    android:paddingTop="?attr/actionBarSize"-->
 <!--    tools:context=".AreaChoice">-->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/areaButtonsLayout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:layout_marginBottom="10dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="10dp"
-    tools:context=".AreaChoice">
+    <LinearLayout
+        tools:context=".AreaChoice"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/areaButtonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp"
+>
 
-</LinearLayout>
 
-    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--        <Button-->
+        <!--            android:id="@+id/button"-->
+        <!--            android:text="Button"-->
+        <!--            app:layout_rowWeight="0"-->
+        <!--            app:layout_columnWeight="1"-->
+        <!--            />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button2"-->
+        <!--            android:text="Button"-->
+        <!--            app:layout_columnWeight="1"-->
+        <!--            app:layout_rowWeight="0"-->
+        <!--            />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button3"-->
+        <!--            android:text="Button"-->
+
+
+        <!--            app:layout_columnWeight="1"-->
+        <!--            app:layout_rowWeight="0"-->
+        <!--            />-->
+        <!--    </androidx.gridlayout.widget.GridLayout>-->
+    <TextView
+        android:id="@+id/subjectName"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    </LinearLayout>
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -16,6 +16,10 @@ class SubjectViewModel (application: Application) : AndroidViewModel(application
         return repository.getByName(name)
     }
 
+    fun getSubjectById(id: Int) : Subject {
+        return repository.getById(id)
+    }
+
     init {
         val subjectDao = AppDatabase.getDatabase(application, viewModelScope).subjectDao()
         repository = SubjectRepository(subjectDao)
