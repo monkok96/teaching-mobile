@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teachinghelper.Questions.QuestionListAdapter
 import com.example.teachinghelper.ViewModels.QuestionViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import java.lang.Exception
+import com.example.teachinghelper.ViewModels.SubjectViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var questionsViewModel: QuestionViewModel
+    private lateinit var subjectViewModel: SubjectViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,11 +49,20 @@ class MainActivity : AppCompatActivity() {
         val mathsButton = findViewById<Button>(R.id.MathsButton)
         val englishButton = findViewById<Button>(R.id.EnglishButton)
 
+        subjectViewModel = ViewModelProviders.of(this).get(SubjectViewModel::class.java)
+        var maths = subjectViewModel.subjectByName(mathsButton.text.toString())
+        var english = subjectViewModel.subjectByName((englishButton.text.toString()))
+
         mathsButton.setOnClickListener {
-            // Handler code here.
             val intent = Intent(this, AreaChoice::class.java)
+            intent.putExtra("subjectId", maths.id)
             startActivity(intent)
         }
 
+        englishButton.setOnClickListener {
+            val intent = Intent(this, AreaChoice::class.java)
+            intent.putExtra("subjectId", english.id)
+            startActivity(intent)
+        }
     }
 }

@@ -12,6 +12,9 @@ class AreasViewModel (application: Application) : AndroidViewModel(application) 
 
     private val repository: AreaRepository
     val allAreas: List<Area>
+    fun areasBySubject(subjectId: Int) : List<Area> {
+        return repository.getAreasBySubject(subjectId)
+    }
 
     init {
         val areaDao = AppDatabase.getDatabase(application, viewModelScope).areaDao()

@@ -17,4 +17,7 @@ interface AreaDao {
 
     @Query("DELETE FROM areas")
     suspend fun deleteAll()
+
+    @Query ("SELECT a.id, a.name, a.subjectId FROM areas a JOIN subjects s on a.subjectId = s.id WHERE s.id=:subjectId")
+    fun getBySubject(subjectId: Int): List<Area>
 }

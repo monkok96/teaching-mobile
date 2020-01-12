@@ -75,7 +75,7 @@ abstract class AppDatabase  : RoomDatabase() {
                 areaDao.insert(geometry)
                 var percentage = Area(2, "Procenty", maths.id)
                 areaDao.insert(percentage)
-                var home = Area(3, "dom", english.id)
+                var home = Area(3, "Dom", english.id)
                 areaDao.insert(home)
 
                 var easyLevel = DifficultyLevel(1, "łatwy", 1)

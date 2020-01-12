@@ -17,4 +17,7 @@ interface SubjectDao {
 
     @Query("DELETE FROM subjects")
     suspend fun deleteAll()
+
+    @Query ("SELECT * FROM subjects s WHERE  s.name=:name")
+    fun getByName(name: String): Subject
 }

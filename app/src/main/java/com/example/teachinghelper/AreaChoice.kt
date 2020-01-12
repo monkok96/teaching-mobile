@@ -20,18 +20,19 @@ class AreaChoice : AppCompatActivity() {
         setContentView(R.layout.activity_area_choice)
 
         var buttonsLayout = findViewById(R.id.areaButtonsLayout) as LinearLayout;
+        val subjectId = intent.getIntExtra("subjectId", 1)
 
         areasViewModel = ViewModelProviders.of(this).get(AreasViewModel::class.java)
         // TODO: actually get proper areas depending on chosen subject
-        var areas = areasViewModel.allAreas
+        var areas = areasViewModel.areasBySubject(subjectId)
 
 //        areas.forEach{
         for (area in areas) {
             val btnTag = Button(this).also {
                 it.setLayoutParams(
-                    ActionBar.LayoutParams(
-                        ActionBar.LayoutParams.WRAP_CONTENT,
-                        ActionBar.LayoutParams.WRAP_CONTENT
+                    LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
                     )
                 )
                 it.setText(area.name)

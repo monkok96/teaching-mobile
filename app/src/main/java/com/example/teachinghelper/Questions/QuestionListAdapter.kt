@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.teachinghelper.Entities.Question
 import com.example.teachinghelper.R
 import com.example.teachinghelper.readmodel.QuestionAllInfo
 
