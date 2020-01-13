@@ -53,20 +53,6 @@
             android:textColor="@android:color/background_light" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/QuestionsButton"
-        android:layout_width="129dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="56dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Pytania"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MathsButton"
-        app:layout_constraintVertical_bias="0.478" />
-
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/nav_view"-->
 <!--        android:layout_width="0dp"-->

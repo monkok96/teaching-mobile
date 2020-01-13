@@ -15,16 +15,16 @@ class QuestionsActivity : AppCompatActivity() {
     private lateinit var questionModel: QuestionViewModel
     private lateinit var answerModel: AnswerViewModel
     private lateinit var buttons: List<Button>
-    private var areaId = 1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questions)
+        val areaId = intent.getIntExtra("areaId", 1)
 
         questionModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
         answerModel = ViewModelProviders.of(this).get(AnswerViewModel::class.java)
 
-        var data = questionModel.byAreaId(this.areaId);
+        var data = questionModel.byAreaId(areaId);
         var data2 = answerModel.getAnswersByQuestionId(data[0].id).shuffled();
 
         this.initAnswerButtons()
