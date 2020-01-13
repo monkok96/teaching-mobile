@@ -11,6 +11,9 @@ interface AnswerDao {
     @Query("SELECT * FROM answers")
     fun getAll(): List<Answer>
 
+    @Query("SELECT * FROM answers WHERE questionId = :questionId")
+    fun getAnswersByQuestionId(questionId: Int): List<Answer>
+
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(answer: Answer)
