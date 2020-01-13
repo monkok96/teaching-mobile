@@ -7,7 +7,7 @@ class QuestionRepository(private val questionDao: QuestionDao) {
 
     val allQuestionsWithAreas: List<QuestionAllInfo> = questionDao.getAll()
 
-//    suspend fun insert(question: Question) {
-//        questionDao.insert(question)
-//    }
+    fun byAreaId(areaId: Int) : List<QuestionAllInfo> {
+        return questionDao.byAreaId(areaId)
+    }
 }

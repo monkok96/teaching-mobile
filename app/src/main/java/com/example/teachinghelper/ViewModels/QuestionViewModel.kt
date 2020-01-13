@@ -5,18 +5,21 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.teachinghelper.Database.AppDatabase
 import com.example.teachinghelper.Repositories.QuestionRepository
 import androidx.lifecycle.viewModelScope
+import com.example.teachinghelper.Entities.Subject
 import com.example.teachinghelper.readmodel.QuestionAllInfo
 
 class QuestionViewModel (application: Application) : AndroidViewModel(application) {
 
     // The ViewModel maintains a reference to the repository to get data.
     private val repository: QuestionRepository
-    val allQuestions: List<QuestionAllInfo>
 
     init {
         val questionsDao = AppDatabase.getDatabase(application, viewModelScope).questionDao()
         repository = QuestionRepository(questionsDao)
-        allQuestions = repository.allQuestionsWithAreas
+    }
+
+    fun byAreaId(areaId: Int) : List<QuestionAllInfo> {
+        return repository.byAreaId(areaId);
     }
 
     /**

@@ -11,7 +11,18 @@ import com.example.teachinghelper.Entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Question::class, Area::class, Subject::class,Answer::class, DifficultyLevel::class, Attempt::class, AnswersHistory::class ), version = 4)
+@Database(
+    version = 5,
+    entities = [
+        Question::class,
+        Area::class,
+        Subject::class,
+        Answer::class,
+        DifficultyLevel::class,
+        Attempt::class, 
+        AnswersHistory::class
+    ]
+)
 @TypeConverters(Converters::class)
 abstract class AppDatabase  : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
@@ -63,7 +74,6 @@ abstract class AppDatabase  : RoomDatabase() {
             }
 
             suspend fun populateDatabase(questionDao: QuestionDao, areaDao: AreaDao, answerDao: AnswerDao, difficultyLevelDao: DifficultyLevelDao,subjectDao: SubjectDao ) {
-                // Delete all content here.
                 areaDao.deleteAll()
                 questionDao.deleteAll()
                 answerDao.deleteAll()
@@ -89,85 +99,73 @@ abstract class AppDatabase  : RoomDatabase() {
                 var hardLevel = DifficultyLevel(3, "trudny", 3)
                 difficultyLevelDao.insert(hardLevel)
 
-                var question = Question(1, geometry.id, "Ile wynosi suma kątów w trójkącie?", 1)
-                questionDao.insert(question)
-                var answ1 = Answer(1, "180", question.id, true)
-                answerDao.insert(answ1)
-                var answ2 = Answer(2, "120", question.id, false)
-                answerDao.insert(answ2)
-                var answ3 = Answer(3, "360", question.id, false)
-                answerDao.insert(answ3)
-                var answ4 = Answer(4, "900", question.id,false)
-                answerDao.insert(answ4)
+                var questionId = questionDao.insert(
+                    Question(
+                        null,
+                         geometry.id,
+                        "Ile wynosi suma kątów w trójkącie?",
+                        1
+                    )
+                )
+                answerDao.insert(Answer(null, "180", questionId , true))
+                answerDao.insert(Answer(null, "120", questionId, false))
+                answerDao.insert(Answer(null, "360", questionId, false))
+                answerDao.insert(Answer(null, "900", questionId,false))
 
-                question = Question(2, percentage.id, "Koszulka kosztowała 100zł. Jej cena została obniżona o 10%, a nastepnie podwyższona o 10%." +
-                        "Ile wynosi aktualna cena koszulki?", hardLevel.id)
-                questionDao.insert(question)
-                answ1 = Answer(1, "99", question.id, true)
-                answerDao.insert(answ1)
-                answ2 = Answer(2, "100", question.id, false)
-                answerDao.insert(answ2)
-                answ3 = Answer(3, "90", question.id, false)
-                answerDao.insert(answ3)
-                answ4 = Answer(4, "110", question.id,false)
-                answerDao.insert(answ4)
+                questionId = questionDao.insert(
+                    Question(
+                        null,
+                        percentage.id,
+                        "Koszulka kosztowała 100zł. Jej cena została obniżona o 10%, a nastepnie podwyższona o 10%. Ile wynosi aktualna cena koszulki?",
+                        hardLevel.id
+                    )
+                )
+                answerDao.insert(Answer(null, "99", questionId, true))
+                answerDao.insert(Answer(null, "100", questionId, false))
+                answerDao.insert(Answer(null, "90", questionId, false))
+                answerDao.insert(Answer(null, "110", questionId,false))
 
-                question = Question(3, geometry.id, "Ile wynosi objętość sześcianu o boku długości 3?", mediumLevel.id)
-                questionDao.insert(question)
-                answ1 = Answer(5, "9", question.id, false)
-                answerDao.insert(answ1)
-                answ2 = Answer(6, "30", question.id, false)
-                answerDao.insert(answ2)
-                answ3 = Answer(7, "krowa", question.id, false)
-                answerDao.insert(answ3)
-                answ4 = Answer(8, "27", question.id,true)
-                answerDao.insert(answ4)
+                questionId = questionDao.insert(
+                    Question(
+                        null,
+                        geometry.id,
+                        "Ile wynosi objętość sześcianu o boku długości 3?",
+                        mediumLevel.id
+                    )
+                )
+                answerDao.insert(Answer(null, "9", questionId, false))
+                answerDao.insert(Answer(null, "30", questionId, false))
+                answerDao.insert(Answer(null, "krowa", questionId, false))
+                answerDao.insert(Answer(null, "27", questionId,true))
 
-                question = Question(4, home.id, "Jak powiesz po angielsku na zmywarkę?", mediumLevel.id)
-                questionDao.insert(question)
-                answ1 = Answer(9, "dishwasher", question.id, true)
-                answerDao.insert(answ1)
-                answ2 = Answer(10, "plateswasher", question.id, false)
-                answerDao.insert(answ2)
-                answ3 = Answer(11, "kitchen machine", question.id, false)
-                answerDao.insert(answ3)
-                answ4 = Answer(12, "WOMAN", question.id,false)
-                answerDao.insert(answ4)
+                questionId = questionDao.insert(
+                    Question(null, home.id, "Jak powiesz po angielsku na zmywarkę?", mediumLevel.id)
+                )
+                answerDao.insert(Answer(null, "dishwasher", questionId, true))
+                answerDao.insert(Answer(null, "plateswasher", questionId, false))
+                answerDao.insert(Answer(null, "kitchen machine", questionId, false))
+                answerDao.insert(Answer(null, "WOMAN", questionId,false))
 
-                question = Question(5, home.id, "Po angielsku łóżko to...",easyLevel.id )
-                questionDao.insert(question)
-                answ1 = Answer(13, "bed", question.id, true)
-                answerDao.insert(answ1)
-                answ2 = Answer(14, "bad", question.id, false)
-                answerDao.insert(answ2)
-                answ3 = Answer(15, "sleep", question.id, false)
-                answerDao.insert(answ3)
-                answ4 = Answer(16, "desk", question.id,false)
-                answerDao.insert(answ4)
+                questionId = questionDao.insert(
+                    Question(null, home.id, "Po angielsku łóżko to...",easyLevel.id )
+                )
+                answerDao.insert(Answer(null, "bed", questionId, true))
+                answerDao.insert(Answer(null, "bad", questionId, false))
+                answerDao.insert(Answer(null, "sleep", questionId, false))
+                answerDao.insert(Answer(null, "desk", questionId,false))
 
-                question = Question(6, home.id, "Jaki angielski idiom odpowiada polskiemu 'Nie ma to jak w domu'??", hardLevel.id)
-                questionDao.insert(question)
-                answ1 = Answer(17, "There is no place like home!", question.id, true)
-                answerDao.insert(answ1)
-                answ2 = Answer(18, "Doesn't have like in home!", question.id, false)
-                answerDao.insert(answ2)
-                answ3 = Answer(19, "Home is a holy place!", question.id, false)
-                answerDao.insert(answ3)
-                answ4 = Answer(20, "Welcome to my home!", question.id,false)
-                answerDao.insert(answ4)
-
-            }
-        }
-
-//        suspend fun populateDatabase(questionDao: QuestionDao) {
-//            // Start the app with a clean database every time.
-//            // Not needed if you only populate on creation.
-//            questionDao.deleteAll()
-//
-//            var word = Word("Hello")
-//            wordDao.insert(word)
-//            word = Word("World!")
-//            wordDao.insert(word)
-//        }
+                questionId = questionDao.insert(
+                    Question(
+                        null,
+                        home.id,
+                        "Jaki angielski idiom odpowiada polskiemu 'Nie ma to jak w domu'??",
+                        hardLevel.id
+                    )
+                )
+                answerDao.insert(Answer(null, "There is no place like home!", questionId, true))
+                answerDao.insert(Answer(null, "Doesn't have like in home!", questionId, false))
+                answerDao.insert(Answer(null, "Home is a holy place!", questionId, false))
+                answerDao.insert(Answer(null, "Welcome to my home!", questionId,false))
+            }        }
     }
 }
