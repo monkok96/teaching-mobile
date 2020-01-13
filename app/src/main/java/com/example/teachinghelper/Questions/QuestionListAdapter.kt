@@ -28,7 +28,7 @@ class QuestionListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
         val current = questions[position]
-        holder.questionItemView.text = current.content + " " + current.areaName
+        holder.questionItemView.text = current.content + " "
     }
 
     internal fun setQuestions(questions: List<QuestionAllInfo>) {
