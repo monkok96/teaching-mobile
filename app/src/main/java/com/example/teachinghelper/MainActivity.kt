@@ -15,6 +15,12 @@ import com.example.teachinghelper.Questions.QuestionListAdapter
 import com.example.teachinghelper.ViewModels.QuestionViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.ViewModels.SubjectViewModel
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var questionsViewModel: QuestionViewModel
@@ -46,23 +52,18 @@ class MainActivity : AppCompatActivity() {
 //        questionsViewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
 //
 //        adapter.setQuestions((questionsViewModel.allQuestions))
-        val mathsButton = findViewById<Button>(R.id.MathsButton)
-        val englishButton = findViewById<Button>(R.id.EnglishButton)
 
-        subjectViewModel = ViewModelProviders.of(this).get(SubjectViewModel::class.java)
-        var maths = subjectViewModel.subjectByName(mathsButton.text.toString())
-        var english = subjectViewModel.subjectByName((englishButton.text.toString()))
 
-        mathsButton.setOnClickListener {
-            val intent = Intent(this, AreaChoice::class.java)
-            intent.putExtra("subjectId", maths.id)
+        val startGameButton = findViewById<Button>(R.id.StartGameButton)
+        startGameButton.setOnClickListener {
+            val intent = Intent(this, SubjectChoice::class.java)
             startActivity(intent)
         }
 
-        englishButton.setOnClickListener {
-            val intent = Intent(this, AreaChoice::class.java)
-            intent.putExtra("subjectId", english.id)
-            startActivity(intent)
+        var exitButton = findViewById<Button>(R.id.ExitButton)
+        exitButton.setOnClickListener {
+                finish()
+                System.exit(0)
         }
     }
 }
