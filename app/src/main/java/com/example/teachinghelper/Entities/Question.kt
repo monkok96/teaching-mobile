@@ -6,17 +6,21 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "questions",
     foreignKeys = arrayOf(
-        ForeignKey(entity = Area::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("areaId"),
-        onDelete = ForeignKey.CASCADE),
-        ForeignKey(entity = DifficultyLevel::class,
+        ForeignKey(
+            entity = Area::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("areaId"),
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = DifficultyLevel::class,
             parentColumns = arrayOf("id"),
             childColumns = arrayOf("difficultyLevelId"),
-            onDelete = ForeignKey.CASCADE)
+            onDelete = ForeignKey.CASCADE
+        )
     ))
 data class Question (
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int?,
     val areaId: Int,
     val content: String,
     val difficultyLevelId: Int

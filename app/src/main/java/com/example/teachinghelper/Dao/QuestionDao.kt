@@ -16,7 +16,7 @@ interface QuestionDao {
     fun byAreaId(areaId: Int): List<QuestionAllInfo>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(question: Question)
+    suspend fun insert(question: Question): Long
 
     @Query("DELETE FROM questions")
     suspend fun deleteAll()

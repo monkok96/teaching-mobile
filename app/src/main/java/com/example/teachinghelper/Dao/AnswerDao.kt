@@ -16,7 +16,7 @@ interface AnswerDao {
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(answer: Answer)
+    suspend fun insert(answer: Answer): Long
 
     @Query("DELETE FROM answers")
     suspend fun deleteAll()
