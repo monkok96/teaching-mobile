@@ -11,9 +11,11 @@ interface AnswersHistoryDao {
     @Query("SELECT * FROM answershistory")
     fun getAll(): List<AnswersHistory>
 
+    @Query("SELECT * FROM answershistory WHERE attemptId = :id")
+    fun getByAttemptId(id: Long): List<AnswersHistory>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(attempt: AnswersHistory)
+    fun insert(attempt: AnswersHistory)
 
     @Query("DELETE FROM answershistory")
     suspend fun deleteAll()
