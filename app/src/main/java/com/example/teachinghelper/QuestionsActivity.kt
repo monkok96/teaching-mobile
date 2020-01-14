@@ -1,5 +1,6 @@
 package com.example.teachinghelper
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
@@ -9,20 +10,19 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.Entities.Answer
-import com.example.teachinghelper.Entities.Question
 import com.example.teachinghelper.Helpers.AnswersLogger
 import com.example.teachinghelper.ViewModels.AnswerViewModel
 import com.example.teachinghelper.ViewModels.QuestionViewModel
 import com.example.teachinghelper.readmodel.QuestionAllInfo
-import java.util.*
 
 class QuestionsActivity : AppCompatActivity() {
     private lateinit var questionModel: QuestionViewModel
     private lateinit var answerModel: AnswerViewModel
     private lateinit var buttons: List<Button>
     private lateinit var allAreaQuestions: List<QuestionAllInfo>
-    private val answers: AnswersLogger = AnswersLogger();
-    private lateinit var defaultButtonBackground: Drawable;
+    private lateinit var answers: AnswersLogger
+    private lateinit var defaultButtonBackground: Drawable
+    private val answersCount = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,15 @@ class QuestionsActivity : AppCompatActivity() {
     }
 
     private fun initialize() {
+        this.initializeAnswers()
         this.initializeAnswerButtons()
         this.initializeModels()
         this.initializeData()
         this.initializeCallbacks()
+    }
+
+    private fun initializeAnswers() {
+        this.answers = AnswersLogger(ViewModelProviders.of(this))
     }
 
     private fun initializeAnswerButtons() {
@@ -68,11 +73,17 @@ class QuestionsActivity : AppCompatActivity() {
     private fun initializeCallbacks() {
         val nextButton = findViewById<Button>(R.id.nextButton)
         nextButton.setOnClickListener{
-            if (this.answers.answersCount() < 10) {
+            val answerCountText = "${this.answers.answersCount()} z ${this.answersCount}"
+            findViewById<TextView>(R.id.AnswerCount).text = answerCountText
+            if (this.answers.answersCount() < this.answersCount) {
                 this.prepareViewForNewQuestion()
                 this.buttons.forEach{
                     it.background = this.defaultButtonBackground
                 }
+            } else {
+                val intent = Intent(this, AttemptSummary::class.java)
+                intent.putExtra("attemptId", this.answers.save())
+                startActivity(intent)
             }
         }
     }
@@ -113,8 +124,6 @@ class QuestionsActivity : AppCompatActivity() {
 
     private fun clickAction(answers: List<Answer>, selected: Answer) {
         this.answers.log(selected)
-        val answerCountText = "${this.answers.answersCount()} z ${10}"
-        findViewById<TextView>(R.id.AnswerCount).text = answerCountText
 
         this.buttons.forEachIndexed{ index, currentButton ->
             if (answers[index] === selected || answers[index].isCorrect) {

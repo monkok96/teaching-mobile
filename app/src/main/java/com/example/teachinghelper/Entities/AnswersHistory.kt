@@ -20,8 +20,8 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE)
     ))
 data class AnswersHistory (
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val attemptId: Int,
-    val questionId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long?,
+    val attemptId: Long,
+    val questionId: Long,
     val answerId: Int
 )
