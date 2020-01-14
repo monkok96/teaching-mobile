@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.teachinghelper.Dao.*
 import com.example.teachinghelper.Entities.*
@@ -17,15 +18,20 @@ import kotlinx.coroutines.launch
         Area::class,
         Subject::class,
         Answer::class,
-        DifficultyLevel::class
+        DifficultyLevel::class,
+        Attempt::class, 
+        AnswersHistory::class
     ]
 )
+@TypeConverters(Converters::class)
 abstract class AppDatabase  : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
     abstract fun areaDao(): AreaDao
     abstract fun subjectDao(): SubjectDao
     abstract fun answerDao(): AnswerDao
     abstract fun difficultyLevelDao(): DifficultyLevelDao
+    abstract fun attemptDao(): AttemptDao
+    abstract fun answersHistoryDao(): AnswersHistoryDao
 
 
     companion object {
@@ -160,7 +166,6 @@ abstract class AppDatabase  : RoomDatabase() {
                 answerDao.insert(Answer(null, "Doesn't have like in home!", questionId, false))
                 answerDao.insert(Answer(null, "Home is a holy place!", questionId, false))
                 answerDao.insert(Answer(null, "Welcome to my home!", questionId,false))
-            }
-        }
+            }        }
     }
 }
