@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 5,
+    version = 6,
     entities = [
         Question::class,
         Area::class,
@@ -49,7 +49,7 @@ abstract class AppDatabase  : RoomDatabase() {
                 )
                     .addCallback(AppDatabaseCallback(scope))
                         // remove it later because it deletes all data from database!!!!!!!
-//                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance

@@ -56,7 +56,7 @@ class AreaChoice : AppCompatActivity() {
             buttonsLayout.addView(btnTag)
 
             btnTag.setOnClickListener {
-                val intent = Intent(this, AttemptSummary::class.java)
+                val intent = Intent(this, QuestionsActivity::class.java)
                 intent.putExtra("areaId", area.id)
                 startActivity(intent)
             }
