@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.ViewModels.AnswerHistoryViewModel
@@ -16,6 +17,8 @@ class AttemptSummary : AppCompatActivity() {
     private val defaultValueLong = -1L
     private lateinit var areaModel: AreasViewModel
     private lateinit var answerHistoryModel: AnswerHistoryViewModel
+    private var attemptId = 0L
+    private var areaId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,13 @@ class AttemptSummary : AppCompatActivity() {
         initializeModels()
         initializeData()
 
+        val detailsButton = findViewById<RelativeLayout>(R.id.AttemptDetailsButton)
+        detailsButton.setOnClickListener{
+            val intent = Intent(this, AttemptDetailsActivity::class.java)
+            intent.putExtra("attemptId", attemptId)
+            intent.putExtra("areaId", areaId)
+            startActivity(intent)
+        }
 
         val menuButton = findViewById<Button>(R.id.menuButton)
         menuButton.setOnClickListener {
@@ -37,21 +47,19 @@ class AttemptSummary : AppCompatActivity() {
     }
 
     private fun initializeData() {
-        val areaId = intent.getIntExtra("areaId", defaultValue)
+        areaId = intent.getIntExtra("areaId", defaultValue)
         if (areaId == defaultValue) {
             throw Exception("areaId is not set")
         }
 
         initializeSubjectText(areaId)
 
-        val attemptId = intent.getLongExtra("attemptId", defaultValueLong)
+        attemptId = intent.getLongExtra("attemptId", defaultValueLong)
         if (attemptId == defaultValueLong) {
             throw Exception("attemptId is not set")
         }
 
         initializePointsSummary(attemptId)
-
-        val data = ViewModelProviders.of(this).get(AnswerHistoryViewModel::class.java).getByAttemptId(attemptId)
     }
 
     private fun initializeSubjectText(areaId: Int) {
