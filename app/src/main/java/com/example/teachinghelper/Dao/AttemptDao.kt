@@ -13,7 +13,7 @@ interface AttemptDao {
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(attempt: Attempt)
+    fun insert(attempt: Attempt): Long
 
     @Query("DELETE FROM attempts")
     suspend fun deleteAll()
