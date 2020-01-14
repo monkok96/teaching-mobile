@@ -10,6 +10,7 @@ import com.example.teachinghelper.Entities.Area
 import com.example.teachinghelper.Repositories.AnswerRepository
 import com.example.teachinghelper.Repositories.AnswersHistoryRepository
 import com.example.teachinghelper.Repositories.AreaRepository
+import com.example.teachinghelper.readmodel.Count
 
 
 class AnswerHistoryViewModel (application: Application) : AndroidViewModel(application) {
@@ -22,6 +23,14 @@ class AnswerHistoryViewModel (application: Application) : AndroidViewModel(appli
 
     fun getByAttemptId(id: Long): List<AnswersHistory> {
         return this.repository.getByAttemptId(id)
+    }
+
+    fun getQuestionsCountInAttempt(attemptId: Long): Count {
+        return this.repository.getQuestionsCountInAttempt(attemptId)
+    }
+
+    fun getCorrectAnswersCountInAttempt(attemptId: Long): Count {
+        return this.repository.getCorrectAnswersCountInAttempt(attemptId)
     }
 
     init {

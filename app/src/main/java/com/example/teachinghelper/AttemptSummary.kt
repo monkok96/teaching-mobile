@@ -15,6 +15,7 @@ class AttemptSummary : AppCompatActivity() {
     private val defaultValue = -1
     private val defaultValueLong = -1L
     private lateinit var areaModel: AreasViewModel
+    private lateinit var answerHistoryModel: AnswerHistoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class AttemptSummary : AppCompatActivity() {
 
     private fun initializeModels() {
         this.areaModel = ViewModelProviders.of(this).get(AreasViewModel::class.java)
+        this.answerHistoryModel = ViewModelProviders.of(this).get(AnswerHistoryViewModel::class.java)
     }
 
     private fun initializeData() {
@@ -47,6 +49,8 @@ class AttemptSummary : AppCompatActivity() {
             throw Exception("attemptId is not set")
         }
 
+        initializePointsSummary(attemptId)
+
         val data = ViewModelProviders.of(this).get(AnswerHistoryViewModel::class.java).getByAttemptId(attemptId)
     }
 
@@ -54,5 +58,13 @@ class AttemptSummary : AppCompatActivity() {
         val subjectTitleText = findViewById<TextView>(R.id.subjectTitle)
         val subjectWithArea = this.areaModel.getAreaWithSubjectById(areaId)
         subjectTitleText.text = subjectWithArea.getString()
+    }
+
+    private fun initializePointsSummary(attemptId: Long) {
+        val correctAnswersText = findViewById<TextView>(R.id.correctAnswersText)
+        val questionsInAttempt = this.answerHistoryModel.getQuestionsCountInAttempt(attemptId)
+        val correctAnswersInAttempt = this.answerHistoryModel.getCorrectAnswersCountInAttempt(attemptId)
+
+        correctAnswersText.text ="Poprawnych odpowiedzi: ${correctAnswersInAttempt.value} z ${questionsInAttempt.value}"
     }
 }
