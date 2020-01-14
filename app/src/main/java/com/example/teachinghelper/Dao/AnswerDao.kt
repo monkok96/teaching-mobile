@@ -12,7 +12,7 @@ interface AnswerDao {
     fun getAll(): List<Answer>
 
     @Query("SELECT * FROM answers WHERE questionId = :questionId")
-    fun getAnswersByQuestionId(questionId: Int): List<Answer>
+    fun getAnswersByQuestionId(questionId: Long): List<Answer>
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

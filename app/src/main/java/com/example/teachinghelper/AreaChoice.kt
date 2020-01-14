@@ -29,9 +29,10 @@ class AreaChoice : AppCompatActivity() {
 
     private fun setSubjectName() {
         subjectViewModel = ViewModelProviders.of(this).get(SubjectViewModel::class.java)
-        val subjectName =  subjectViewModel.getSubjectById(subjectId).name
+        val subjectName =  subjectViewModel.getSubjectById(subjectId)
+            val tmp = subjectName.name
         var subjectNameText = findViewById<TextView>(R.id.subjectName)
-        subjectNameText.text = subjectName
+        subjectNameText.text = tmp
     }
 
 
@@ -49,7 +50,7 @@ class AreaChoice : AppCompatActivity() {
             val btnTag = Button(this).also {
                 it.layoutParams = layoutParams
                 it.text = area.name
-                it.id = area.id
+//                it.id = area.id.toInt()
                 it.setBackgroundResource(R.drawable.round_button)
                 it.setTextColor(Color.parseColor("#ffffff"))
             }

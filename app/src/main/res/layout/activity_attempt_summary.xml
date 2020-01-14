@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/attemptSummaryTitleText"
+        android:id="@+id/subjectTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
         android:textStyle="bold"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/attemptSummaryTitleText" />
+        app:layout_constraintTop_toBottomOf="@+id/subjectTitle" />
 
     <RelativeLayout
         android:id="@+id/AttemptDetailsButton"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/mathsImage"
 
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="35dp"
             android:layout_marginBottom="81dp"
             android:gravity="center"
             android:text="Kliknij, aby zobaczyć, jak odpowiadałeś"

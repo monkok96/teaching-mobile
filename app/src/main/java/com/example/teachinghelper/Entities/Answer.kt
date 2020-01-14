@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE)
     ))
 data class Answer (
-    @PrimaryKey(autoGenerate = true) val id: Int?,
+    @PrimaryKey(autoGenerate = true) val id: Long?,
     val content: String,
     val questionId: Long,
     val isCorrect: Boolean

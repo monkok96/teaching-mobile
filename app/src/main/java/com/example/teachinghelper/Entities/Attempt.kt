@@ -7,6 +7,6 @@ import java.sql.Date
 
 @Entity(tableName = "attempts")
 data class Attempt (
-    @PrimaryKey(autoGenerate = true) val id: Int?,
+    @PrimaryKey(autoGenerate = true) val id: Long?,
     val date: Date
 )

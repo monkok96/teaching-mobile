@@ -7,7 +7,7 @@
     tools:context=".QuestionsActivity">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/subjectTitle"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:text="Matematyka, Geometria"
@@ -91,7 +91,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/subjectTitle"
         tools:text="1 z 3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

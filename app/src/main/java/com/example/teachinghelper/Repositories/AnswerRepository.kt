@@ -8,7 +8,7 @@ import com.example.teachinghelper.Entities.Area
 class AnswerRepository(private val answerDao: AnswerDao) {
     val allAnswers: List<Answer> = answerDao.getAll()
 
-    fun getAnswersByQuestionId(questionId: Int) : List<Answer> {
+    fun getAnswersByQuestionId(questionId: Long) : List<Answer> {
         return answerDao.getAnswersByQuestionId(questionId)
     }
 

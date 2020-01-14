@@ -104,7 +104,7 @@ abstract class AppDatabase  : RoomDatabase() {
                         null,
                          geometry.id,
                         "Ile wynosi suma kątów w trójkącie?",
-                        1
+                        easyLevel.id
                     )
                 )
                 answerDao.insert(Answer(null, "180", questionId , true))

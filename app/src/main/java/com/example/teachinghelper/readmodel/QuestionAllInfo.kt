@@ -1,6 +1,6 @@
 package com.example.teachinghelper.readmodel
 
 class QuestionAllInfo (
-    val id: Int,
+    val id: Long,
     val content: String
 )

@@ -12,17 +12,20 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.Entities.Answer
 import com.example.teachinghelper.Helpers.AnswersLogger
 import com.example.teachinghelper.ViewModels.AnswerViewModel
+import com.example.teachinghelper.ViewModels.AreasViewModel
 import com.example.teachinghelper.ViewModels.QuestionViewModel
 import com.example.teachinghelper.readmodel.QuestionAllInfo
 
 class QuestionsActivity : AppCompatActivity() {
     private lateinit var questionModel: QuestionViewModel
     private lateinit var answerModel: AnswerViewModel
+    private lateinit var areaModel: AreasViewModel
     private lateinit var buttons: List<Button>
     private lateinit var allAreaQuestions: List<QuestionAllInfo>
     private lateinit var answers: AnswersLogger
     private lateinit var defaultButtonBackground: Drawable
     private val answersCount = 3
+    private var areaId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,17 +60,26 @@ class QuestionsActivity : AppCompatActivity() {
     private fun initializeModels() {
         this.answerModel = ViewModelProviders.of(this).get(AnswerViewModel::class.java)
         this.questionModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
+        this.areaModel = ViewModelProviders.of(this).get(AreasViewModel::class.java)
     }
 
     private fun initializeData() {
         val defaultValue = -1
-        val areaId = intent.getIntExtra("areaId", defaultValue)
+        areaId = intent.getIntExtra("areaId", defaultValue)
 
         if (areaId == defaultValue) {
             throw Exception("areaId is not set")
         }
 
+        initializeSubjectText()
+
         this.allAreaQuestions = this.questionModel.byAreaId(areaId)
+    }
+
+    private fun initializeSubjectText() {
+        val subjectTitleText = findViewById<TextView>(R.id.subjectTitle)
+        val subjectWithArea = this.areaModel.getAreaWithSubjectById(areaId)
+        subjectTitleText.text = subjectWithArea.getString()
     }
 
     private fun initializeCallbacks() {
@@ -84,6 +96,7 @@ class QuestionsActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this, AttemptSummary::class.java)
                 intent.putExtra("attemptId", this.answers.save())
+                intent.putExtra("areaId", areaId)
                 startActivity(intent)
             }
         }
@@ -119,7 +132,7 @@ class QuestionsActivity : AppCompatActivity() {
         return this.allAreaQuestions.shuffled().firstOrNull()
     }
 
-    private fun getAnswersForQuestionWith(id: Int): List<Answer> {
+    private fun getAnswersForQuestionWith(id: Long): List<Answer> {
         return answerModel.getAnswersByQuestionId(id)
     }
 

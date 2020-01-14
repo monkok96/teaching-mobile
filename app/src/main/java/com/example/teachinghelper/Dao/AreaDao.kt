@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.teachinghelper.Entities.Area
+import com.example.teachinghelper.readmodel.AreaWithSubject
 
 @Dao
 interface AreaDao {
@@ -20,4 +21,7 @@ interface AreaDao {
 
     @Query ("SELECT a.id, a.name, a.subjectId FROM areas a JOIN subjects s on a.subjectId = s.id WHERE s.id=:subjectId")
     fun getBySubject(subjectId: Int): List<Area>
+
+    @Query ("SELECT a.name as areaName, s.name as subjectName FROM areas a JOIN subjects s on a.subjectId = s.id WHERE a.id=:areaId")
+    fun getAreaWithSubjectById(areaId: Int): AreaWithSubject
 }

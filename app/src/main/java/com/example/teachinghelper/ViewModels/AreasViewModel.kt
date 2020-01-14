@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.teachinghelper.Database.AppDatabase
 import com.example.teachinghelper.Entities.Area
 import com.example.teachinghelper.Repositories.AreaRepository
+import com.example.teachinghelper.readmodel.AreaWithSubject
 
 
 class AreasViewModel (application: Application) : AndroidViewModel(application) {
@@ -14,6 +15,10 @@ class AreasViewModel (application: Application) : AndroidViewModel(application) 
     val allAreas: List<Area>
     fun areasBySubject(subjectId: Int) : List<Area> {
         return repository.getAreasBySubject(subjectId)
+    }
+
+    fun getAreaWithSubjectById(areaId: Int) : AreaWithSubject {
+        return repository.getAreaWithSubjectById(areaId)
     }
 
     init {

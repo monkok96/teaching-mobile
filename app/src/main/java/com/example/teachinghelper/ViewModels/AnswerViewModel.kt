@@ -14,7 +14,7 @@ class AnswerViewModel (application: Application) : AndroidViewModel(application)
 
     private val repository: AnswerRepository
 
-    fun getAnswersByQuestionId(questionId: Int) : List<Answer> {
+    fun getAnswersByQuestionId(questionId: Long) : List<Answer> {
         return repository.getAnswersByQuestionId(questionId)
     }
 

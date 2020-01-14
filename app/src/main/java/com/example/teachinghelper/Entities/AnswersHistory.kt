@@ -23,5 +23,5 @@ data class AnswersHistory (
     @PrimaryKey(autoGenerate = true) val id: Long?,
     val attemptId: Long,
     val questionId: Long,
-    val answerId: Int
+    val answerId: Long
 )
