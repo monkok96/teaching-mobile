@@ -49,7 +49,7 @@ abstract class AppDatabase  : RoomDatabase() {
                 )
                     .addCallback(AppDatabaseCallback(scope))
                         // remove it later because it deletes all data from database!!!!!!!
-                    .fallbackToDestructiveMigration()
+//                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance

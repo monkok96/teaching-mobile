@@ -7,6 +7,7 @@
     android:orientation="horizontal"
     android:weightSum="1.0">
 
+
     <RelativeLayout
         android:id="@+id/MathsButtonLayout"
         android:layout_width="0dp"
@@ -37,7 +38,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/EnglishButtonLayout"
