@@ -73,9 +73,10 @@ class QuestionsActivity : AppCompatActivity() {
     private fun initializeCallbacks() {
         val nextButton = findViewById<Button>(R.id.nextButton)
         nextButton.setOnClickListener{
-            val answerCountText = "${this.answers.answersCount()} z ${this.answersCount}"
-            findViewById<TextView>(R.id.AnswerCount).text = answerCountText
             if (this.answers.answersCount() < this.answersCount) {
+                val answerCountText = "${this.answers.answersCount() + 1} z ${this.answersCount}"
+                findViewById<TextView>(R.id.AnswerCount).text = answerCountText
+
                 this.prepareViewForNewQuestion()
                 this.buttons.forEach{
                     it.background = this.defaultButtonBackground
