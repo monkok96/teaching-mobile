@@ -8,9 +8,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.ViewModels.AnswerHistoryViewModel
-import com.example.teachinghelper.ViewModels.AnswerViewModel
 import com.example.teachinghelper.ViewModels.AreasViewModel
-import com.example.teachinghelper.ViewModels.QuestionViewModel
+
+
 
 class AttemptSummary : AppCompatActivity() {
     private val defaultValue = -1
@@ -36,8 +36,18 @@ class AttemptSummary : AppCompatActivity() {
 
         val menuButton = findViewById<Button>(R.id.menuButton)
         menuButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java )
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent)
+            finish()
+        }
+
+        val playAgainButton = findViewById<Button>(R.id.playAgainButton)
+        playAgainButton.setOnClickListener{
+            val intent = Intent(this, SubjectChoice::class.java )
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -74,5 +84,11 @@ class AttemptSummary : AppCompatActivity() {
         val correctAnswersInAttempt = this.answerHistoryModel.getCorrectAnswersCountInAttempt(attemptId)
 
         correctAnswersText.text ="Poprawnych odpowiedzi: ${correctAnswersInAttempt.value} z ${questionsInAttempt.value}"
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, AreaChoice::class.java))
+        finish()
     }
 }

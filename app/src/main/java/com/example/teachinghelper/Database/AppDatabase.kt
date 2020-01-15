@@ -47,13 +47,13 @@ abstract class AppDatabase  : RoomDatabase() {
                     AppDatabase::class.java,
                     "teachingApp_database"
                 )
-                    .addCallback(AppDatabaseCallback(scope))
-                        // remove it later because it deletes all data from database!!!!!!!
-                    .fallbackToDestructiveMigration()
+                        //only needed if adding new data
+//                   .addCallback(AppDatabaseCallback(scope))
+//                        // remove it later because it deletes all data from database!!!!!!!
+////                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
 
             }

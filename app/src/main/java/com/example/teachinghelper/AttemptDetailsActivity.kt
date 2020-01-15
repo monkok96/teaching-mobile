@@ -53,11 +53,15 @@ class AttemptDetailsActivity : AppCompatActivity() {
             throw Exception("attemptId is not set")
         }
 
+
+        val allHistory = answerHistoryModel.getAll()
+
         val attemptDate = attemptModel.getAttemptDate(attemptId)
         val attemptDateText = findViewById<TextView>(R.id.attemptDate)
-        attemptDateText.text = "Podejście z dnia  ${attemptDate.value}"
+        attemptDateText.text = "Podejście z dnia  ${attemptDate.value} liczba w historii: ${allHistory.size}"
 
         initializeList(attemptId)
+
 
     }
 

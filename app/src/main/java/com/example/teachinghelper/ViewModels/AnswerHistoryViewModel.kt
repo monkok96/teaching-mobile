@@ -39,6 +39,10 @@ class AnswerHistoryViewModel (application: Application) : AndroidViewModel(appli
         return this.repository. getChosenAnswerForQuestionInAttempt(questionId, answerHistoryId)
     }
 
+    fun getAll(): List<AnswersHistory> {
+        return this.repository.allAnswersHistory
+    }
+
     init {
         repository = AnswersHistoryRepository(AppDatabase.getDatabase(application, viewModelScope).answersHistoryDao())
     }
