@@ -6,11 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.teachinghelper.Database.AppDatabase
 import com.example.teachinghelper.Entities.Answer
 import com.example.teachinghelper.Entities.AnswersHistory
-import com.example.teachinghelper.Entities.Area
-import com.example.teachinghelper.Repositories.AnswerRepository
 import com.example.teachinghelper.Repositories.AnswersHistoryRepository
-import com.example.teachinghelper.Repositories.AreaRepository
 import com.example.teachinghelper.readmodel.Count
+import com.example.teachinghelper.readmodel.QuestionShortInfo
 
 
 class AnswerHistoryViewModel (application: Application) : AndroidViewModel(application) {
@@ -31,6 +29,14 @@ class AnswerHistoryViewModel (application: Application) : AndroidViewModel(appli
 
     fun getCorrectAnswersCountInAttempt(attemptId: Long): Count {
         return this.repository.getCorrectAnswersCountInAttempt(attemptId)
+    }
+
+    fun getQuestionsWithinAttemp(attemptId: Long) : List<QuestionShortInfo> {
+        return this.repository.getQuestionsWithinAttempt(attemptId)
+    }
+
+    fun getChosenAnswerForQuestion(questionId: Long, answerHistoryId: Long) : Answer {
+        return this.repository. getChosenAnswerForQuestionInAttempt(questionId, answerHistoryId)
     }
 
     init {

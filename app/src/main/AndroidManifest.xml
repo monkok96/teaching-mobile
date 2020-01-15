@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AttemptDetailsActivity"></activity>
+        <activity
+            android:name=".temp"
+            android:label="@string/title_activity_temp"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".AttemptDetailsActivity" />
         <activity android:name=".AttemptSummary" />
         <activity android:name=".QuestionsActivity" />
         <activity android:name=".AreaChoice" />

@@ -20,4 +20,7 @@ interface AnswerDao {
 
     @Query("DELETE FROM answers")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM answers WHERE questionId=:questionId AND isCorrect=1")
+    fun getCorrectAnswerForQuestion(questionId: Long): Answer
 }

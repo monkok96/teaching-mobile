@@ -9,6 +9,7 @@ import com.example.teachinghelper.Entities.AnswersHistory
 import com.example.teachinghelper.Entities.Area
 import com.example.teachinghelper.Entities.Attempt
 import com.example.teachinghelper.readmodel.Count
+import com.example.teachinghelper.readmodel.QuestionShortInfo
 
 class AnswersHistoryRepository(private val answersHistoryDao: AnswersHistoryDao) {
     val allAnswersHistory: List<AnswersHistory> = answersHistoryDao.getAll()
@@ -28,4 +29,14 @@ class AnswersHistoryRepository(private val answersHistoryDao: AnswersHistoryDao)
     fun getCorrectAnswersCountInAttempt(attemptId: Long): Count {
         return this.answersHistoryDao.getCorrectAnswersCountInAttempt(attemptId)?: Count(0)
     }
+
+    fun getQuestionsWithinAttempt(attemptId: Long) : List<QuestionShortInfo> {
+        return this.answersHistoryDao.getQuestionsWithinAttemp(attemptId)
+    }
+
+    fun  getChosenAnswerForQuestionInAttempt(questionId: Long,  answerHistoryId: Long) : Answer {
+        return this.answersHistoryDao. getChosenAnswerForQuestionInAttempt(questionId, answerHistoryId)
+    }
+
+
 }

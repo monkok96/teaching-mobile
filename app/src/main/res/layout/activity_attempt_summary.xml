@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Wyniki podejścia z zakresu Matematyka - Geometria"
+        android:text="Matematyka - Geometria"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="30sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

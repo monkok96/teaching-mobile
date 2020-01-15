@@ -4,9 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.teachinghelper.Database.AppDatabase
-import com.example.teachinghelper.Entities.Subject
 import com.example.teachinghelper.Repositories.AttemptRepository
-import com.example.teachinghelper.Repositories.SubjectRepository
+import com.example.teachinghelper.readmodel.DateElement
 
 class AttemptViewModel (application: Application) : AndroidViewModel(application) {
 
@@ -18,5 +17,9 @@ class AttemptViewModel (application: Application) : AndroidViewModel(application
 
     fun createNewAttempt(): Long {
         return this.repository.createNewAttempt()
+    }
+
+    fun getAttemptDate(attemptId: Long) : DateElement {
+        return this.repository.getAttemptDate(attemptId)
     }
 }

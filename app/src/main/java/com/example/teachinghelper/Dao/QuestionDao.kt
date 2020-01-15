@@ -20,4 +20,5 @@ interface QuestionDao {
 
     @Query("DELETE FROM questions")
     suspend fun deleteAll()
+
 }

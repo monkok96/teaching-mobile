@@ -12,4 +12,8 @@ class AnswerRepository(private val answerDao: AnswerDao) {
         return answerDao.getAnswersByQuestionId(questionId)
     }
 
+    fun getCorrectAnswerForQuestion(questionId: Long): Answer {
+        return answerDao.getCorrectAnswerForQuestion(questionId)
+    }
+
 }

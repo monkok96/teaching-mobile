@@ -18,6 +18,10 @@ class AnswerViewModel (application: Application) : AndroidViewModel(application)
         return repository.getAnswersByQuestionId(questionId)
     }
 
+    fun getCorrectAnswerForQuestion(questionId: Long): Answer {
+        return repository.getCorrectAnswerForQuestion(questionId)
+    }
+
     init {
         repository = AnswerRepository(AppDatabase.getDatabase(application, viewModelScope).answerDao())
     }
