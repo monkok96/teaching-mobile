@@ -14,7 +14,6 @@ class SubjectChoice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject_choice)
 
-
         val mathsButton = findViewById<RelativeLayout>(R.id.MathsButtonLayout)
         val englishButton = findViewById<RelativeLayout>(R.id.EnglishButtonLayout)
         val mathsName = findViewById<TextView>(R.id.mathsText)

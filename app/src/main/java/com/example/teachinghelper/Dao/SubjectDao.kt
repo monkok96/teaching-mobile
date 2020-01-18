@@ -13,7 +13,7 @@ interface SubjectDao {
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(subject: Subject)
+    suspend fun insert(subject: Subject): Long
 
     @Query("DELETE FROM subjects")
     suspend fun deleteAll()
@@ -22,5 +22,5 @@ interface SubjectDao {
     fun getByName(name: String): Subject
 
     @Query("SELECT * FROM subjects s WHERE s.id=:id")
-    fun getById(id: Int):Subject
+    fun getById(id: Long): Subject
 }

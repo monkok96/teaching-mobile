@@ -16,7 +16,7 @@ class SubjectViewModel (application: Application) : AndroidViewModel(application
         return repository.getByName(name)
     }
 
-    fun getSubjectById(id: Int) : Subject {
+    fun getSubjectById(id: Long) : Subject {
         return repository.getById(id)
     }
 

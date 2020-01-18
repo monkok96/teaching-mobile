@@ -10,9 +10,12 @@ import com.example.teachinghelper.Dao.*
 import com.example.teachinghelper.Entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.lang.Exception
+
 
 @Database(
-    version = 6,
+    version = 8,
     entities = [
         Question::class,
         Area::class,
@@ -20,7 +23,8 @@ import kotlinx.coroutines.launch
         Answer::class,
         DifficultyLevel::class,
         Attempt::class, 
-        AnswersHistory::class
+        AnswersHistory::class,
+        ApplicationInformation::class
     ]
 )
 @TypeConverters(Converters::class)
@@ -32,6 +36,7 @@ abstract class AppDatabase  : RoomDatabase() {
     abstract fun difficultyLevelDao(): DifficultyLevelDao
     abstract fun attemptDao(): AttemptDao
     abstract fun answersHistoryDao(): AnswersHistoryDao
+    abstract fun applicationInformationDao(): ApplicationInformationDao
 
 
     companion object {
@@ -47,10 +52,10 @@ abstract class AppDatabase  : RoomDatabase() {
                     AppDatabase::class.java,
                     "teachingApp_database"
                 )
-                        //only needed if adding new data
-//                   .addCallback(AppDatabaseCallback(scope))
-//                        // remove it later because it deletes all data from database!!!!!!!
-////                    .fallbackToDestructiveMigration()
+                    //only needed if adding new data
+                    .addCallback( AppDatabaseCallback(context, scope))
+                    // remove it later because it deletes all data from database!!!!!!!
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
@@ -61,6 +66,7 @@ abstract class AppDatabase  : RoomDatabase() {
 
 
         private class AppDatabaseCallback(
+            private val context: Context,
             private val scope: CoroutineScope
         ) : RoomDatabase.Callback() {
 
@@ -68,29 +74,29 @@ abstract class AppDatabase  : RoomDatabase() {
                 super.onOpen(db)
                 INSTANCE?.let { database ->
                     scope.launch {
-                        populateDatabase(database.questionDao(), database.areaDao(), database.answerDao(), database.difficultyLevelDao(), database.subjectDao())
+                        populateDatabase(database.questionDao(), database.areaDao(), database.answerDao(), database.difficultyLevelDao(), database.subjectDao(), database.applicationInformationDao())
                     }
                 }
             }
 
-            suspend fun populateDatabase(questionDao: QuestionDao, areaDao: AreaDao, answerDao: AnswerDao, difficultyLevelDao: DifficultyLevelDao,subjectDao: SubjectDao ) {
+            suspend fun populateDatabase(questionDao: QuestionDao, areaDao: AreaDao, answerDao: AnswerDao, difficultyLevelDao: DifficultyLevelDao, subjectDao: SubjectDao, applicationInformationDao: ApplicationInformationDao ) {
+                val inputStream = context.resources.assets.open("database.json")
+                val json = inputStream.bufferedReader().use{it.readText()}
+                val databaseFile = JSONObject(json)
+
+                val versionPropertyName = "version"
+                val version = databaseFile.getString(versionPropertyName)
+                var dbValue: ApplicationInformation? = applicationInformationDao.getByPropertyName(versionPropertyName)
+
+                if (dbValue?.value == version) {
+                    return
+                }
+
                 areaDao.deleteAll()
                 questionDao.deleteAll()
                 answerDao.deleteAll()
                 difficultyLevelDao.deleteAll()
                 subjectDao.deleteAll()
-
-                var maths = Subject(1, "Matematyka")
-                subjectDao.insert(maths)
-                var english = Subject(2, "Angielski")
-                subjectDao.insert(english)
-
-                var geometry = Area(1, "Geometria", maths.id)
-                areaDao.insert(geometry)
-                var percentage = Area(2, "Procenty", maths.id)
-                areaDao.insert(percentage)
-                var home = Area(3, "Dom", english.id)
-                areaDao.insert(home)
 
                 var easyLevel = DifficultyLevel(1, "łatwy", 1)
                 difficultyLevelDao.insert(easyLevel)
@@ -99,73 +105,34 @@ abstract class AppDatabase  : RoomDatabase() {
                 var hardLevel = DifficultyLevel(3, "trudny", 3)
                 difficultyLevelDao.insert(hardLevel)
 
-                var questionId = questionDao.insert(
-                    Question(
-                        null,
-                         geometry.id,
-                        "Ile wynosi suma kątów w trójkącie?",
-                        easyLevel.id
-                    )
-                )
-                answerDao.insert(Answer(null, "180", questionId , true))
-                answerDao.insert(Answer(null, "120", questionId, false))
-                answerDao.insert(Answer(null, "360", questionId, false))
-                answerDao.insert(Answer(null, "900", questionId,false))
+                val database = databaseFile.getJSONObject("database")
+                database.keys().forEach { subjectName ->
+                    val subjectId = subjectDao.insert(Subject(null, subjectName))
+                    database.getJSONObject(subjectName).keys().forEach { areaName ->
+                        val areaId = areaDao.insert(Area(null, areaName, subjectId))
+                        val subjectQuestions = database.getJSONObject(subjectName).getJSONArray(areaName)
 
-                questionId = questionDao.insert(
-                    Question(
-                        null,
-                        percentage.id,
-                        "Koszulka kosztowała 100zł. Jej cena została obniżona o 10%, a nastepnie podwyższona o 10%. Ile wynosi aktualna cena koszulki?",
-                        hardLevel.id
-                    )
-                )
-                answerDao.insert(Answer(null, "99", questionId, true))
-                answerDao.insert(Answer(null, "100", questionId, false))
-                answerDao.insert(Answer(null, "90", questionId, false))
-                answerDao.insert(Answer(null, "110", questionId,false))
+                        for (questionIndex in 0 until subjectQuestions.length()) {
+                            val currentQuestion = subjectQuestions.getJSONObject(questionIndex)
+                            val currentQuestionAnswers = currentQuestion.getJSONArray("answers")
+                            val questionId = questionDao.insert(Question(null, areaId, currentQuestion.getString("content"), currentQuestion.getLong("difficulty")))
 
-                questionId = questionDao.insert(
-                    Question(
-                        null,
-                        geometry.id,
-                        "Ile wynosi objętość sześcianu o boku długości 3?",
-                        mediumLevel.id
-                    )
-                )
-                answerDao.insert(Answer(null, "9", questionId, false))
-                answerDao.insert(Answer(null, "30", questionId, false))
-                answerDao.insert(Answer(null, "krowa", questionId, false))
-                answerDao.insert(Answer(null, "27", questionId,true))
+                            for (answerIndex in 0 until currentQuestionAnswers.length()) {
+                                val currentAnswer = currentQuestionAnswers.getJSONObject(answerIndex)
+                                answerDao.insert(Answer(null, currentAnswer.getString("content"), questionId, currentAnswer.getBoolean("isCorrect")))
+                            }
+                        }
+                    }
+                }
 
-                questionId = questionDao.insert(
-                    Question(null, home.id, "Jak powiesz po angielsku na zmywarkę?", mediumLevel.id)
-                )
-                answerDao.insert(Answer(null, "dishwasher", questionId, true))
-                answerDao.insert(Answer(null, "plateswasher", questionId, false))
-                answerDao.insert(Answer(null, "kitchen machine", questionId, false))
-                answerDao.insert(Answer(null, "WOMAN", questionId,false))
+                if (dbValue == null) {
+                    applicationInformationDao.insert(ApplicationInformation(null, versionPropertyName, version))
+                } else {
+                    dbValue.value = version
+                    applicationInformationDao.update(dbValue);
+                }
 
-                questionId = questionDao.insert(
-                    Question(null, home.id, "Po angielsku łóżko to...",easyLevel.id )
-                )
-                answerDao.insert(Answer(null, "bed", questionId, true))
-                answerDao.insert(Answer(null, "bad", questionId, false))
-                answerDao.insert(Answer(null, "sleep", questionId, false))
-                answerDao.insert(Answer(null, "desk", questionId,false))
-
-                questionId = questionDao.insert(
-                    Question(
-                        null,
-                        home.id,
-                        "Jaki angielski idiom odpowiada polskiemu 'Nie ma to jak w domu'??",
-                        hardLevel.id
-                    )
-                )
-                answerDao.insert(Answer(null, "There is no place like home!", questionId, true))
-                answerDao.insert(Answer(null, "Doesn't have like in home!", questionId, false))
-                answerDao.insert(Answer(null, "Home is a holy place!", questionId, false))
-                answerDao.insert(Answer(null, "Welcome to my home!", questionId,false))
-            }        }
+            }
+        }
     }
 }

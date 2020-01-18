@@ -11,7 +11,7 @@ class SubjectRepository(private val subjectDao: SubjectDao) {
         return subjectDao.getByName(name)
     }
 
-    fun getById(id: Int): Subject {
+    fun getById(id: Long): Subject {
         return subjectDao.getById(id)
     }
 }

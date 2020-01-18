@@ -1,0 +1,213 @@
+{
+  "version": "1.0.1",
+  "database": {
+    "Matematyka": {
+      "Geometria": [
+        {
+          "content": "Ile wynosi suma kątów w trójkącie równobocznym?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": true
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": false
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi suma kątów w kwadracie?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": false
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": true
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi suma kątów w trapezie?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": false
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": true
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi objętość sześcianu o boku długości 3?",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "9",
+              "isCorrect": false
+            },
+            {
+              "content": "30",
+              "isCorrect": false
+            },
+            {
+              "content": "KROWA",
+              "isCorrect": false
+            },
+            {
+              "content": "27",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Czy pole kwadratu o boku 'a' oblicza się za pomocą wzoru:",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "pole = a*a*a",
+              "isCorrect": false
+            },
+            {
+              "content": "pole = pierwiastek(a)",
+              "isCorrect": false
+            },
+            {
+              "content": "pole = a*a",
+              "isCorrect": true
+            },
+            {
+              "content": "Wszystkie są fałszywe",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "Procenty": [
+        {
+          "content": "Koszulka kosztowała 100zł. Jej cena została obniżona o 10%, a nastepnie podwyższona o 10%. Ile wynosi aktualna cena koszulki?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "99",
+              "isCorrect": true
+            },
+            {
+              "content": "100",
+              "isCorrect": false
+            },
+            {
+              "content": "90",
+              "isCorrect": false
+            },
+            {
+              "content": "110",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    "Angielski": {
+      "Dom": [
+        {
+          "content": "Jak powiesz po angielsku na zmywarkę?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "dishwasher",
+              "isCorrect": true
+            },
+            {
+              "content": "plateswasher",
+              "isCorrect": false
+            },
+            {
+              "content": "kitchen machine",
+              "isCorrect": false
+            },
+            {
+              "content": "WOMAN",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Po angielsku łóżko to...",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "bed",
+              "isCorrect": true
+            },
+            {
+              "content": "bad",
+              "isCorrect": false
+            },
+            {
+              "content": "sleep",
+              "isCorrect": false
+            },
+            {
+              "content": "desk",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jaki angielski idiom odpowiada polskiemu 'Nie ma to jak w domu?'",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "There is no place like home!",
+              "isCorrect": true
+            },
+            {
+              "content": "Doesn't have like in home!",
+              "isCorrect": false
+            },
+            {
+              "content": "Home is a holy place!",
+              "isCorrect": false
+            },
+            {
+              "content": "Welcome to my home!",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

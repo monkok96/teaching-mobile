@@ -16,7 +16,7 @@ import com.example.teachinghelper.readmodel.AttemptDetails
 import com.example.teachinghelper.readmodel.QuestionShortInfo
 
 class AttemptDetailsActivity : AppCompatActivity() {
-    private val defaultValue = -1
+    private val defaultValue = -1L
     private val defaultValueLong = -1L
     private lateinit var areaModel: AreasViewModel
     private lateinit var answerHistoryModel: AnswerHistoryViewModel
@@ -41,7 +41,7 @@ class AttemptDetailsActivity : AppCompatActivity() {
     }
 
     private fun initializeData() {
-        val areaId = intent.getIntExtra("areaId", defaultValue)
+        val areaId = intent.getLongExtra("areaId", defaultValue)
         if (areaId == defaultValue) {
             throw Exception("areaId is not set")
         }
@@ -65,7 +65,7 @@ class AttemptDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun initializeSubjectText(areaId: Int) {
+    private fun initializeSubjectText(areaId: Long) {
         val subjectTitleText = findViewById<TextView>(R.id.subjectTitle)
         val subjectWithArea = this.areaModel.getAreaWithSubjectById(areaId)
         subjectTitleText.text = subjectWithArea.getString()

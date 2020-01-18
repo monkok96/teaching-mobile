@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey
     ))
 data class Question (
     @PrimaryKey(autoGenerate = true) val id: Long?,
-    val areaId: Int,
+    val areaId: Long,
     val content: String,
-    val difficultyLevelId: Int
+    val difficultyLevelId: Long
     )

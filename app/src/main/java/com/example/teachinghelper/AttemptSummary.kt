@@ -13,12 +13,12 @@ import com.example.teachinghelper.ViewModels.AreasViewModel
 
 
 class AttemptSummary : AppCompatActivity() {
-    private val defaultValue = -1
+    private val defaultValue = -1L
     private val defaultValueLong = -1L
     private lateinit var areaModel: AreasViewModel
     private lateinit var answerHistoryModel: AnswerHistoryViewModel
     private var attemptId = 0L
-    private var areaId = 0
+    private var areaId = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,7 @@ class AttemptSummary : AppCompatActivity() {
     }
 
     private fun initializeData() {
-        areaId = intent.getIntExtra("areaId", defaultValue)
+        areaId = intent.getLongExtra("areaId", defaultValue)
         if (areaId == defaultValue) {
             throw Exception("areaId is not set")
         }
@@ -72,7 +72,7 @@ class AttemptSummary : AppCompatActivity() {
         initializePointsSummary(attemptId)
     }
 
-    private fun initializeSubjectText(areaId: Int) {
+    private fun initializeSubjectText(areaId: Long) {
         val subjectTitleText = findViewById<TextView>(R.id.subjectTitle)
         val subjectWithArea = this.areaModel.getAreaWithSubjectById(areaId)
         subjectTitleText.text = subjectWithArea.getString()

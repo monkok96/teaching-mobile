@@ -14,14 +14,14 @@ interface AreaDao {
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(area: Area)
+    suspend fun insert(area: Area): Long
 
     @Query("DELETE FROM areas")
     suspend fun deleteAll()
 
     @Query ("SELECT a.id, a.name, a.subjectId FROM areas a JOIN subjects s on a.subjectId = s.id WHERE s.id=:subjectId")
-    fun getBySubject(subjectId: Int): List<Area>
+    fun getBySubject(subjectId: Long): List<Area>
 
     @Query ("SELECT a.name as areaName, s.name as subjectName FROM areas a JOIN subjects s on a.subjectId = s.id WHERE a.id=:areaId")
-    fun getAreaWithSubjectById(areaId: Int): AreaWithSubject
+    fun getAreaWithSubjectById(areaId: Long): AreaWithSubject
 }

@@ -16,13 +16,13 @@ import com.example.teachinghelper.ViewModels.SubjectViewModel
 class AreaChoice : AppCompatActivity() {
     private lateinit var areasViewModel: AreasViewModel
     private lateinit var subjectViewModel: SubjectViewModel
-    private var subjectId: Int = 0
+    private var subjectId: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_area_choice)
 
-        subjectId = intent.getIntExtra("subjectId", 1)
+        subjectId = intent.getLongExtra("subjectId", 0)
         setSubjectName()
         setButtons()
     }
@@ -30,7 +30,7 @@ class AreaChoice : AppCompatActivity() {
     private fun setSubjectName() {
         subjectViewModel = ViewModelProviders.of(this).get(SubjectViewModel::class.java)
         val subjectName =  subjectViewModel.getSubjectById(subjectId)
-            val tmp = subjectName.name
+        val tmp = subjectName.name
         var subjectNameText = findViewById<TextView>(R.id.subjectName)
         subjectNameText.text = tmp
     }

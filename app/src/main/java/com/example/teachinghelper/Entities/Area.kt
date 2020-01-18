@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
         onDelete = ForeignKey.CASCADE)
     ))
 data class Area (
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long?,
     val name: String,
-    val subjectId: Int
+    val subjectId: Long
 )

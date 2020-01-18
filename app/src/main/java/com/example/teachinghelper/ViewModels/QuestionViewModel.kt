@@ -22,6 +22,9 @@ class QuestionViewModel (application: Application) : AndroidViewModel(applicatio
         return repository.byAreaId(areaId);
     }
 
+    fun byAreaIdWithDifficulty(areaId: Long, difficultyLevelId: Int): List<QuestionAllInfo> {
+        return this.repository.byAreaIdWithDifficulty(areaId, difficultyLevelId)
+    }
     /**
      * The implementation of insert() in the database is completely hidden from the UI.
      * Room ensures that you're not doing any long running operations on

@@ -6,11 +6,11 @@ import com.example.teachinghelper.readmodel.AreaWithSubject
 
 class AreaRepository(private val areaDao: AreaDao) {
     val allAreas: List<Area> = areaDao.getAll()
-    fun getAreasBySubject(subjectId: Int) : List<Area> {
+    fun getAreasBySubject(subjectId: Long) : List<Area> {
         return areaDao.getBySubject(subjectId)
     }
 
-    fun getAreaWithSubjectById(areaId: Int) : AreaWithSubject {
+    fun getAreaWithSubjectById(areaId: Long) : AreaWithSubject {
         return areaDao.getAreaWithSubjectById(areaId)
     }
 

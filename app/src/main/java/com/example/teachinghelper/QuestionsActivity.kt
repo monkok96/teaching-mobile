@@ -11,6 +11,9 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.teachinghelper.Entities.Answer
 import com.example.teachinghelper.Helpers.AnswersLogger
+import com.example.teachinghelper.Helpers.PreditionModule.PredictionHandlersFactory
+import com.example.teachinghelper.Helpers.PreditionModule.PredictionType
+import com.example.teachinghelper.Helpers.PreditionModule.QuestionsSelector
 import com.example.teachinghelper.ViewModels.AnswerViewModel
 import com.example.teachinghelper.ViewModels.AreasViewModel
 import com.example.teachinghelper.ViewModels.QuestionViewModel
@@ -21,11 +24,11 @@ class QuestionsActivity : AppCompatActivity() {
     private lateinit var answerModel: AnswerViewModel
     private lateinit var areaModel: AreasViewModel
     private lateinit var buttons: List<Button>
-    private lateinit var allAreaQuestions: List<QuestionAllInfo>
+    private lateinit var selectedQuestions: List<QuestionAllInfo>
     private lateinit var answers: AnswersLogger
     private lateinit var defaultButtonBackground: Drawable
     private val answersCount = 3
-    private var areaId: Int = -1
+    private var areaId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +67,8 @@ class QuestionsActivity : AppCompatActivity() {
     }
 
     private fun initializeData() {
-        val defaultValue = -1
-        areaId = intent.getIntExtra("areaId", defaultValue)
+        val defaultValue = -1L
+        areaId = intent.getLongExtra("areaId", defaultValue)
 
         if (areaId == defaultValue) {
             throw Exception("areaId is not set")
@@ -73,7 +76,7 @@ class QuestionsActivity : AppCompatActivity() {
 
         initializeSubjectText()
 
-        this.allAreaQuestions = this.questionModel.byAreaId(areaId)
+        this.selectedQuestions = QuestionsSelector(ViewModelProviders.of(this), PredictionHandlersFactory()).get(PredictionType.BASIC, this.areaId, this.answersCount)
     }
 
     private fun initializeSubjectText() {
@@ -129,7 +132,7 @@ class QuestionsActivity : AppCompatActivity() {
     }
 
     private fun getRandomQuestion(): QuestionAllInfo? {
-        return this.allAreaQuestions.shuffled().firstOrNull()
+        return this.selectedQuestions.get(this.answers.answersCount())
     }
 
     private fun getAnswersForQuestionWith(id: Long): List<Answer> {

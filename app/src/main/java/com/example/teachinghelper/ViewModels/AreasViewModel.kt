@@ -13,11 +13,11 @@ class AreasViewModel (application: Application) : AndroidViewModel(application) 
 
     private val repository: AreaRepository
     val allAreas: List<Area>
-    fun areasBySubject(subjectId: Int) : List<Area> {
+    fun areasBySubject(subjectId: Long) : List<Area> {
         return repository.getAreasBySubject(subjectId)
     }
 
-    fun getAreaWithSubjectById(areaId: Int) : AreaWithSubject {
+    fun getAreaWithSubjectById(areaId: Long) : AreaWithSubject {
         return repository.getAreaWithSubjectById(areaId)
     }
 

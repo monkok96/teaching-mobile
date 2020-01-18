@@ -10,4 +10,8 @@ class QuestionRepository(private val questionDao: QuestionDao) {
     fun byAreaId(areaId: Int) : List<QuestionAllInfo> {
         return questionDao.byAreaId(areaId)
     }
+
+    fun byAreaIdWithDifficulty(areaId: Long, difficultyLevelId: Int): List<QuestionAllInfo> {
+        return this.questionDao.byAreaIdWithDifficulty(areaId, difficultyLevelId)
+    }
 }
