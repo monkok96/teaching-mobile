@@ -9,6 +9,7 @@ import com.example.teachinghelper.Entities.AnswersHistory
 import com.example.teachinghelper.Entities.Area
 import com.example.teachinghelper.Entities.Attempt
 import com.example.teachinghelper.readmodel.Count
+import com.example.teachinghelper.readmodel.PredictionAnswersHistory
 import com.example.teachinghelper.readmodel.QuestionShortInfo
 
 class AnswersHistoryRepository(private val answersHistoryDao: AnswersHistoryDao) {
@@ -16,6 +17,10 @@ class AnswersHistoryRepository(private val answersHistoryDao: AnswersHistoryDao)
 
     fun getByAttemptId(id: Long): List<AnswersHistory> {
         return this.answersHistoryDao.getByAttemptId(id)
+    }
+
+    fun getAllForPrediction(areaId: Long): List<PredictionAnswersHistory> {
+        return this.answersHistoryDao.getAllForPrediction(areaId)
     }
 
     fun insertAnswer(answer: AnswersHistory) {

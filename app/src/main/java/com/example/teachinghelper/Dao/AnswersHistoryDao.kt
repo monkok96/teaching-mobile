@@ -8,12 +8,16 @@ import com.example.teachinghelper.Entities.Answer
 import com.example.teachinghelper.Entities.AnswersHistory
 import com.example.teachinghelper.readmodel.AttemptDetails
 import com.example.teachinghelper.readmodel.Count
+import com.example.teachinghelper.readmodel.PredictionAnswersHistory
 import com.example.teachinghelper.readmodel.QuestionShortInfo
 
 @Dao
 interface AnswersHistoryDao {
     @Query("SELECT * FROM answershistory")
     fun getAll(): List<AnswersHistory>
+
+    @Query("SELECT questions.id AS questionId, attempts.date AS answerDate, questions.difficultyLevelId AS difficultyLevel, answers.isCorrect AS isCorrect FROM answershistory LEFT JOIN attempts ON answershistory.attemptId = attempts.id LEFT JOIN questions ON answershistory.questionId = questions.id LEFT JOIN answers ON answershistory.answerId = answers.id WHERE questions.areaId = :areaId")
+    fun getAllForPrediction(areaId: Long): List<PredictionAnswersHistory>
 
     @Query("SELECT * FROM answershistory WHERE attemptId = :id")
     fun getByAttemptId(id: Long): List<AnswersHistory>

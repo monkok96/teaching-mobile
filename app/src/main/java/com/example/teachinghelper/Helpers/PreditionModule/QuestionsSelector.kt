@@ -1,7 +1,6 @@
 package com.example.teachinghelper.Helpers.PreditionModule
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.teachinghelper.Entities.Question
 import com.example.teachinghelper.ViewModels.AnswerHistoryViewModel
 import com.example.teachinghelper.ViewModels.QuestionViewModel
 import com.example.teachinghelper.readmodel.QuestionAllInfo
@@ -19,7 +18,7 @@ class QuestionsSelector {
 
     fun get(type: PredictionType, areaId: Long, count: Int): List<QuestionAllInfo> {
         val handler = this.factory.get(type)
-        val questionsToGet = handler.get(this.answerHistoryModel.getAll(), count)
+        val questionsToGet = handler.get(this.answerHistoryModel.getAllForPrediction(areaId), count)
 
         val questions: MutableList<QuestionAllInfo> = mutableListOf()
 
