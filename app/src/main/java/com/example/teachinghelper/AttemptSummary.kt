@@ -17,8 +17,9 @@ class AttemptSummary : AppCompatActivity() {
     private val defaultValueLong = -1L
     private lateinit var areaModel: AreasViewModel
     private lateinit var answerHistoryModel: AnswerHistoryViewModel
-    private var attemptId = 0L
-    private var areaId = 0L
+    private var attemptId = -1L
+    private var areaId = -1L
+    private var subjectId = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +71,12 @@ class AttemptSummary : AppCompatActivity() {
         }
 
         initializePointsSummary(attemptId)
+
+        subjectId = intent.getLongExtra("subjectId", defaultValue)
+        if (subjectId == defaultValue) {
+            throw Exception("subjectId is not set")
+        }
+
     }
 
     private fun initializeSubjectText(areaId: Long) {
@@ -88,7 +95,9 @@ class AttemptSummary : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, AreaChoice::class.java))
+        val intent = Intent(this, AreaChoice::class.java)
+        intent.putExtra("subjectId", subjectId)
+        startActivity(intent)
         finish()
     }
 }

@@ -29,6 +29,7 @@ class QuestionsActivity : AppCompatActivity() {
     private lateinit var defaultButtonBackground: Drawable
     private val answersCount = 3
     private var areaId: Long = -1
+    private var subjectId: Long = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +75,12 @@ class QuestionsActivity : AppCompatActivity() {
             throw Exception("areaId is not set")
         }
 
+        subjectId = intent.getLongExtra("subjectId", defaultValue)
+
+        if (subjectId == defaultValue) {
+            throw Exception("subjectId is not set")
+        }
+
         initializeSubjectText()
         this.selectedQuestions = QuestionsSelector(ViewModelProviders.of(this), PredictionHandlersFactory()).get(PredictionType.AVERAGE, this.areaId, this.answersCount)
     }
@@ -99,6 +106,8 @@ class QuestionsActivity : AppCompatActivity() {
                 val intent = Intent(this, AttemptSummary::class.java)
                 intent.putExtra("attemptId", this.answers.save())
                 intent.putExtra("areaId", areaId)
+                intent.putExtra("subjectId", subjectId)
+                finish()
                 startActivity(intent)
             }
         }

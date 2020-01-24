@@ -16,13 +16,18 @@ import com.example.teachinghelper.ViewModels.SubjectViewModel
 class AreaChoice : AppCompatActivity() {
     private lateinit var areasViewModel: AreasViewModel
     private lateinit var subjectViewModel: SubjectViewModel
-    private var subjectId: Long = 0
+    private var subjectId: Long = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_area_choice)
 
-        subjectId = intent.getLongExtra("subjectId", 0)
+        val defaultValue = -1L
+        subjectId = intent.getLongExtra("subjectId", defaultValue)
+        if (subjectId == defaultValue) {
+            throw Exception("subjectId is not set")
+        }
+
         setSubjectName()
         setButtons()
     }
@@ -50,7 +55,6 @@ class AreaChoice : AppCompatActivity() {
             val btnTag = Button(this).also {
                 it.layoutParams = layoutParams
                 it.text = area.name
-//                it.id = area.id.toInt()
                 it.setBackgroundResource(R.drawable.round_button)
                 it.setTextColor(Color.parseColor("#ffffff"))
             }
@@ -59,6 +63,8 @@ class AreaChoice : AppCompatActivity() {
             btnTag.setOnClickListener {
                 val intent = Intent(this, QuestionsActivity::class.java)
                 intent.putExtra("areaId", area.id)
+                intent.putExtra("subjectId", subjectId)
+             //   finish()
                 startActivity(intent)
             }
         }
