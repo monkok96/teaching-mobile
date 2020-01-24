@@ -94,7 +94,7 @@ class AttemptSummary : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+//        super.onBackPressed()
         val intent = Intent(this, AreaChoice::class.java)
         intent.putExtra("subjectId", subjectId)
         startActivity(intent)

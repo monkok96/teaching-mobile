@@ -64,8 +64,9 @@ class AreaChoice : AppCompatActivity() {
                 val intent = Intent(this, QuestionsActivity::class.java)
                 intent.putExtra("areaId", area.id)
                 intent.putExtra("subjectId", subjectId)
-             //   finish()
+                //finish()
                 startActivity(intent)
+                finish()
             }
         }
     }

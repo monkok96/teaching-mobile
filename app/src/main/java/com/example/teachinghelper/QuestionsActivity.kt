@@ -18,6 +18,9 @@ import com.example.teachinghelper.ViewModels.AnswerViewModel
 import com.example.teachinghelper.ViewModels.AreasViewModel
 import com.example.teachinghelper.ViewModels.QuestionViewModel
 import com.example.teachinghelper.readmodel.QuestionAllInfo
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
+
 
 class QuestionsActivity : AppCompatActivity() {
     private lateinit var questionModel: QuestionViewModel
@@ -161,4 +164,21 @@ class QuestionsActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.nextButton).visibility = View.VISIBLE;
     }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Opuszczanie podejścia")
+        builder.setMessage("Czy na pewno chcesz opuścić to podejście? Nie zostanie ono zapisane.")
+        builder.setPositiveButton("Tak") { _, _ ->
+            val intent = Intent(this, AreaChoice::class.java)
+            intent.putExtra("subjectId", subjectId)
+            startActivity(intent)
+            finish()
+        }
+        builder.setNegativeButton("Nie"
+        ) { _, _ -> run {} }
+        builder.show()
+    }
+
 }
