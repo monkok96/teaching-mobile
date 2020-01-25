@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.teachinghelper.Dao.*
-import com.example.teachinghelper.Entities.*
+import com.example.teachinghelper.Database.Dao.*
+import com.example.teachinghelper.Database.Entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -22,7 +22,7 @@ import java.lang.Exception
         Subject::class,
         Answer::class,
         DifficultyLevel::class,
-        Attempt::class, 
+        Attempt::class,
         AnswersHistory::class,
         ApplicationInformation::class
     ]
@@ -79,7 +79,7 @@ abstract class AppDatabase  : RoomDatabase() {
                 }
             }
 
-            suspend fun populateDatabase(questionDao: QuestionDao, areaDao: AreaDao, answerDao: AnswerDao, difficultyLevelDao: DifficultyLevelDao, subjectDao: SubjectDao, applicationInformationDao: ApplicationInformationDao ) {
+            suspend fun populateDatabase(questionDao: QuestionDao, areaDao: AreaDao, answerDao: AnswerDao, difficultyLevelDao: DifficultyLevelDao, subjectDao: SubjectDao, applicationInformationDao: ApplicationInformationDao) {
                 val inputStream = context.resources.assets.open("database.json")
                 val json = inputStream.bufferedReader().use{it.readText()}
                 val databaseFile = JSONObject(json)
@@ -98,35 +98,72 @@ abstract class AppDatabase  : RoomDatabase() {
                 difficultyLevelDao.deleteAll()
                 subjectDao.deleteAll()
 
-                var easyLevel = DifficultyLevel(1, "łatwy", 1)
+                var easyLevel =
+                    DifficultyLevel(1, "łatwy", 1)
                 difficultyLevelDao.insert(easyLevel)
-                var mediumLevel = DifficultyLevel(2, "średniozaawansowany", 2)
+                var mediumLevel = DifficultyLevel(
+                    2,
+                    "średniozaawansowany",
+                    2
+                )
                 difficultyLevelDao.insert(mediumLevel)
-                var hardLevel = DifficultyLevel(3, "trudny", 3)
+                var hardLevel =
+                    DifficultyLevel(3, "trudny", 3)
                 difficultyLevelDao.insert(hardLevel)
 
                 val database = databaseFile.getJSONObject("database")
                 database.keys().forEach { subjectName ->
-                    val subjectId = subjectDao.insert(Subject(null, subjectName))
+                    val subjectId = subjectDao.insert(
+                        Subject(
+                            null,
+                            subjectName
+                        )
+                    )
                     database.getJSONObject(subjectName).keys().forEach { areaName ->
-                        val areaId = areaDao.insert(Area(null, areaName, subjectId))
+                        val areaId = areaDao.insert(
+                            Area(
+                                null,
+                                areaName,
+                                subjectId
+                            )
+                        )
                         val subjectQuestions = database.getJSONObject(subjectName).getJSONArray(areaName)
 
                         for (questionIndex in 0 until subjectQuestions.length()) {
                             val currentQuestion = subjectQuestions.getJSONObject(questionIndex)
                             val currentQuestionAnswers = currentQuestion.getJSONArray("answers")
-                            val questionId = questionDao.insert(Question(null, areaId, currentQuestion.getString("content"), currentQuestion.getLong("difficulty")))
+                            val questionId = questionDao.insert(
+                                Question(
+                                    null,
+                                    areaId,
+                                    currentQuestion.getString("content"),
+                                    currentQuestion.getLong("difficulty")
+                                )
+                            )
 
                             for (answerIndex in 0 until currentQuestionAnswers.length()) {
                                 val currentAnswer = currentQuestionAnswers.getJSONObject(answerIndex)
-                                answerDao.insert(Answer(null, currentAnswer.getString("content"), questionId, currentAnswer.getBoolean("isCorrect")))
+                                answerDao.insert(
+                                    Answer(
+                                        null,
+                                        currentAnswer.getString("content"),
+                                        questionId,
+                                        currentAnswer.getBoolean("isCorrect")
+                                    )
+                                )
                             }
                         }
                     }
                 }
 
                 if (dbValue == null) {
-                    applicationInformationDao.insert(ApplicationInformation(null, versionPropertyName, version))
+                    applicationInformationDao.insert(
+                        ApplicationInformation(
+                            null,
+                            versionPropertyName,
+                            version
+                        )
+                    )
                 } else {
                     dbValue.value = version
                     applicationInformationDao.update(dbValue);

@@ -1,10 +1,10 @@
 package com.example.teachinghelper.Helpers
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.teachinghelper.Entities.Answer
-import com.example.teachinghelper.Entities.AnswersHistory
-import com.example.teachinghelper.ViewModels.AnswerHistoryViewModel
-import com.example.teachinghelper.ViewModels.AttemptViewModel
+import com.example.teachinghelper.Database.Entities.Answer
+import com.example.teachinghelper.Database.Entities.AnswersHistory
+import com.example.teachinghelper.View.ViewModels.AnswerHistoryViewModel
+import com.example.teachinghelper.View.ViewModels.AttemptViewModel
 
 class AnswersLogger {
     private val answers: MutableList<Answer> = mutableListOf()
@@ -28,9 +28,16 @@ class AnswersLogger {
         val attemptId = this.attemptModel.createNewAttempt()
         this.answers.forEach {
             if (it.id != null) {
-                this.answerHistoryModel.insertAnswer( AnswersHistory(null, attemptId, it.questionId, it.id) )
+                this.answerHistoryModel.insertAnswer(
+                    AnswersHistory(
+                        null,
+                        attemptId,
+                        it.questionId,
+                        it.id
+                    )
+                )
             } else {
-                throw Exception("It id is null")
+                throw Exception("Id is null")
             }
         }
 

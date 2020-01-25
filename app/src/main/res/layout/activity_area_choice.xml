@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".AreaChoice">
+    tools:context=".View.AreaChoice">
 
     <TextView
         android:id="@+id/subjectName"

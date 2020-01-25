@@ -1,9 +1,9 @@
 package com.example.teachinghelper.Helpers.PreditionModule
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.teachinghelper.ViewModels.AnswerHistoryViewModel
-import com.example.teachinghelper.ViewModels.QuestionViewModel
-import com.example.teachinghelper.readmodel.QuestionAllInfo
+import com.example.teachinghelper.View.ViewModels.AnswerHistoryViewModel
+import com.example.teachinghelper.View.ViewModels.QuestionViewModel
+import com.example.teachinghelper.Database.Models.QuestionAllInfo
 
 class QuestionsSelector {
     private val factory: PredictionHandlersFactory
