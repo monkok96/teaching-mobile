@@ -85,7 +85,8 @@ class QuestionsActivity : AppCompatActivity() {
         }
 
         initializeSubjectText()
-        this.selectedQuestions = QuestionsSelector(ViewModelProviders.of(this), PredictionHandlersFactory()).get(PredictionType.AVERAGE, this.areaId, this.answersCount)
+        val QuestionSelector = QuestionsSelector(ViewModelProviders.of(this), PredictionHandlersFactory())
+        this.selectedQuestions = QuestionSelector.get(Settings.selectedPrediction, this.areaId, this.answersCount)
     }
 
     private fun initializeSubjectText() {
