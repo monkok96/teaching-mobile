@@ -53,5 +53,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.1.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 }

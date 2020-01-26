@@ -1,50 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SubjectChoice">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:weightSum="1.0">
 
-    <TextView
-        android:id="@+id/TeachingQuestion"
-        android:layout_width="224dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="108dp"
-        android:text="Czego chcesz się pouczyć?"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/MathsButton"
-        android:layout_width="129dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="104dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Matematyka"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TeachingQuestion" />
+    <RelativeLayout
+        android:id="@+id/MathsButtonLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:background="@android:drawable/alert_light_frame"
+        android:backgroundTint="#74C2E0"
+        android:clickable="true">
 
-    <Button
-        android:id="@+id/EnglishButton"
-        android:layout_width="129dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="340dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Angielski"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MathsButton"
-        app:layout_constraintVertical_bias="0.96" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/mathsImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+            app:srcCompat="@drawable/maths" />
+
+        <TextView
+            android:id="@+id/mathsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mathsImage"
+
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="81dp"
+            android:gravity="center"
+            android:text="Matematyka"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/EnglishButtonLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:background="@android:drawable/alert_light_frame"
+        android:backgroundTint="#C48D8D"
+        android:clickable="true">
+
+
+        <ImageView
+            android:id="@+id/englishImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+            app:srcCompat="@drawable/english" />
+
+        <TextView
+            android:id="@+id/englishText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/englishImage"
+
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="81dp"
+            android:gravity="center"
+            android:text="Angielski"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</LinearLayout>

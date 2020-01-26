@@ -1,0 +1,807 @@
+{
+  "version": "1.0.4",
+  "database": {
+    "Matematyka": {
+      "Geometria": [
+        {
+          "content": "Ile wynosi suma kątów w trójkącie równobocznym?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": true
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": false
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi suma kątów w kwadracie?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": false
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": true
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi suma kątów w trapezie?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "180",
+              "isCorrect": false
+            },
+            {
+              "content": "120",
+              "isCorrect": false
+            },
+            {
+              "content": "360",
+              "isCorrect": true
+            },
+            {
+              "content": "900",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Ile wynosi objętość sześcianu o boku długości 3?",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "9",
+              "isCorrect": false
+            },
+            {
+              "content": "30",
+              "isCorrect": false
+            },
+            {
+              "content": "KROWA",
+              "isCorrect": false
+            },
+            {
+              "content": "27",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Czy pole kwadratu o boku 'a' oblicza się za pomocą wzoru:",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "pole = a*a*a",
+              "isCorrect": false
+            },
+            {
+              "content": "pole = pierwiastek(a)",
+              "isCorrect": false
+            },
+            {
+              "content": "pole = a*a",
+              "isCorrect": true
+            },
+            {
+              "content": "Wszystkie są fałszywe",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jeżeli pomiędzy dwoma ramionami cyrkla mamy długość 8cm, to rysując okrąg będzie on miał: ",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "średnicę 8cm",
+              "isCorrect": false
+            },
+            {
+              "content": "promień 8cm",
+              "isCorrect": true
+            },
+            {
+              "content": "promień 4cm",
+              "isCorrect": false
+            },
+            {
+              "content": "średnicę 4cm",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "W trapezie równoramiennym: ",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "są dwa kąty proste",
+              "isCorrect": false
+            },
+            {
+              "content": "jedna z wysokości trapezu pokrywa się z długością krótszego ramienia",
+              "isCorrect": false
+            },
+            {
+              "content": "mogą wystąpić dwa boki tej samej długości",
+              "isCorrect": false
+            },
+            {
+              "content": "wszystkie odpowiedzi są poprawne",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Przekątne w rombie: ",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "padają do siebie pod kątem prostym",
+              "isCorrect": true
+            },
+            {
+              "content": "są jednakowej długości",
+              "isCorrect": false
+            },
+            {
+              "content": "są zarówno wysokościami tego rombu",
+              "isCorrect": false
+            },
+            {
+              "content": "wszystkie odpowiedzi są poprawne",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Figury przystające charakteryzują się: ",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "identycznymi proporcjami, ale są względem siebie w różnych skalach, np. 2:1",
+              "isCorrect": false
+            },
+            {
+              "content": "tym, że mają takie same długości boków oraz miary kątów między odpowiednimi bokami",
+              "isCorrect": true
+            },
+            {
+              "content": "mają przynajmniej jeden bok wspólny",
+              "isCorrect": false
+            },
+            {
+              "content": "wszystkie odpowiedzi są błędne",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jeżeli ramię trójkąta równoramiennego ma długość 4cm i jest dwa razy dłuższe od podstawy, to jego obwód wynosi: ",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "10cm",
+              "isCorrect": true
+            },
+            {
+              "content": "12cm",
+              "isCorrect": false
+            },
+            {
+              "content": "8cm",
+              "isCorrect": false
+            },
+            {
+              "content": "6cm",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Przekątne równoległoboku: ",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "przecinają się pod kątem prostym",
+              "isCorrect": false
+            },
+            {
+              "content": "są taiej samej długości",
+              "isCorrect": false
+            },
+            {
+              "content": "ich sumaryczna długość jest równa obwodowi tego rówoległoboku",
+              "isCorrect": false
+            },
+            {
+              "content": "wszystkie odpowiedzi są błędne",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Z których odcinków nie da się zbudować trójkąta?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "5cm, 6cm, 7cm",
+              "isCorrect": false
+            },
+            {
+              "content": "10mm, 1cm, 15mm",
+              "isCorrect": false
+            },
+            {
+              "content": "40mm, 1cm, 10mm",
+              "isCorrect": true
+            },
+            {
+              "content": "7cm, 7cm, 7cm",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content":"Są dwa okręgi, jeden ma promień równy 2cm, a drugi 4cm. Odległość między nimi wynosi 6cm. Jakie są one względem siebie?",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "styczne zewnętrznie",
+              "isCorrect": true
+            },
+            {
+              "content": "styczne wewnętrznie",
+              "isCorrect": false
+            },
+            {
+              "content": "rozłączne zewnętrznie",
+              "isCorrect": false
+            },
+            {
+              "content": "przecinające się",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content":"Pole okręgu o średnicy 6 wynosi:",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "9pi",
+              "isCorrect": true
+            },
+            {
+              "content": "36pi",
+              "isCorrect": false
+            },
+            {
+              "content": "6pi",
+              "isCorrect": false
+            },
+            {
+              "content": "12pi",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content":"Która para kątów na pewno nie może pojawić się w trójkącie prostokątnym?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "1 stopień oraz 89 stopni",
+              "isCorrect": false
+            },
+            {
+              "content": "30 stopni oraz 60 stopni",
+              "isCorrect": false
+            },
+            {
+              "content": "45 stopni oraz 45 stopni",
+              "isCorrect": false
+            },
+            {
+              "content": "65 stopni oraz 15 stopni",
+              "isCorrect": true
+            }
+          ]
+        }
+      ],
+      "Procenty": [
+        {
+          "content": "Koszulka kosztowała 100zł. Jej cena została obniżona o 10%, a nastepnie podwyższona o 10%. Ile wynosi aktualna cena koszulki?",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "99",
+              "isCorrect": true
+            },
+            {
+              "content": "100",
+              "isCorrect": false
+            },
+            {
+              "content": "90",
+              "isCorrect": false
+            },
+            {
+              "content": "110",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jeśli co piąta żarówka jest przepalona, to znaczy, że niedziałających żarówek jest:",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "5%",
+              "isCorrect": false
+            },
+            {
+              "content": "20%",
+              "isCorrect": true
+            },
+            {
+              "content": "25%",
+              "isCorrect": false
+            },
+            {
+              "content": "50%",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "30% z 60 to:",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "12",
+              "isCorrect": false
+            },
+            {
+              "content": "18",
+              "isCorrect": true
+            },
+            {
+              "content": "30",
+              "isCorrect": false
+            },
+            {
+              "content": "10",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jeśli podzielimy pizzę na 8 kawałków, to każdy kawałek stanowi: ",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "8% pizzy",
+              "isCorrect": false
+            },
+            {
+              "content": "12,5% pizzy",
+              "isCorrect": true
+            },
+            {
+              "content": "15% pizzy",
+              "isCorrect": false
+            },
+            {
+              "content": "20% pizzy",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jaś przeczytał 40% książki, czyli 140 stron. Ile stron ma książka?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "300",
+              "isCorrect": false
+            },
+            {
+              "content": "350",
+              "isCorrect": true
+            },
+            {
+              "content": "250",
+              "isCorrect": false
+            },
+            {
+              "content": "370",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "W 200g wody rozpuszczono 50g soli. Ile procent soli ma otrzymany rozwtór?",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "20%",
+              "isCorrect": true
+            },
+            {
+              "content": "25%",
+              "isCorrect": false
+            },
+            {
+              "content": "33,(3)%",
+              "isCorrect": false
+            },
+            {
+              "content": "50%",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Cenę butów obniżono z 320zł na 280zł. O ile procent obniżono cenę butów?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "12,5%",
+              "isCorrect": true
+            },
+            {
+              "content": "10%",
+              "isCorrect": false
+            },
+            {
+              "content": "20%",
+              "isCorrect": false
+            },
+            {
+              "content": "15%",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Oblicz 40% liczby 150.",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "60",
+              "isCorrect": true
+            },
+            {
+              "content": "50",
+              "isCorrect": false
+            },
+            {
+              "content": "40",
+              "isCorrect": false
+            },
+            {
+              "content": "55",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Pani Basia pożyczyła z banku 30 000zł na okres 12 miesięcy z oprocentowaniem 15% w skali roku. Po roku musi oddać:",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "34500",
+              "isCorrect": true
+            },
+            {
+              "content": "31500",
+              "isCorrect": false
+            },
+            {
+              "content": "35000",
+              "isCorrect": false
+            },
+            {
+              "content": "30150",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Za bilet lotniczy z Warszawy do Szczecina trzeba zapłacić 700zł plus 7% podatku VAT. Jaka jest cena biletu?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "749zł",
+              "isCorrect": true
+            },
+            {
+              "content": "707zł",
+              "isCorrect": false
+            },
+            {
+              "content": "770zł",
+              "isCorrect": false
+            },
+            {
+              "content": "800zł",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    "Angielski": {
+      "Dom": [
+        {
+          "content": "Jak powiesz po angielsku na zmywarkę?",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "dishwasher",
+              "isCorrect": true
+            },
+            {
+              "content": "plateswasher",
+              "isCorrect": false
+            },
+            {
+              "content": "kitchen machine",
+              "isCorrect": false
+            },
+            {
+              "content": "WOMAN",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "content": "Po angielsku łóżko to...",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "bed",
+              "isCorrect": true
+            },
+            {
+              "content": "bad",
+              "isCorrect": false
+            },
+            {
+              "content": "sleep",
+              "isCorrect": false
+            },
+            {
+              "content": "desk",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jaki angielski idiom odpowiada polskiemu 'Nie ma to jak w domu?'",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "There is no place like home!",
+              "isCorrect": true
+            },
+            {
+              "content": "Doesn't have like in home!",
+              "isCorrect": false
+            },
+            {
+              "content": "Home is a holy place!",
+              "isCorrect": false
+            },
+            {
+              "content": "Welcome to my home!",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Korytarz po angielsku to...",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "hall",
+              "isCorrect": true
+            },
+            {
+              "content": "flat",
+              "isCorrect": false
+            },
+            {
+              "content": "window",
+              "isCorrect": false
+            },
+            {
+              "content": "aerial",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Sąsiedztwo po angielsku to...",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "neighbourhood",
+              "isCorrect": true
+            },
+            {
+              "content": "flat",
+              "isCorrect": false
+            },
+            {
+              "content": "neighbour",
+              "isCorrect": false
+            },
+            {
+              "content": "apartment",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Stairs to...",
+          "difficulty": 2,
+          "answers": [
+            {
+              "content": "schody",
+              "isCorrect": true
+            },
+            {
+              "content": "gwiazdy",
+              "isCorrect": false
+            },
+            {
+              "content": "meble",
+              "isCorrect": false
+            },
+            {
+              "content": "sufit",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Przetłumacz zdanie: 'Mój współlokator zawsze zajmuje łazienkę!'",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "My roommate always occupates the bathroom!",
+              "isCorrect": true
+            },
+            {
+              "content": "My roommate never occupates the bathroom!",
+              "isCorrect": false
+            },
+            {
+              "content": "My room always occupates the bedroom",
+              "isCorrect": false
+            },
+            {
+              "content": "My rommate always occupates the bedroom!",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Przetłumacz 'wieczorami oglądam telewizję'",
+          "difficulty": 3,
+          "answers": [
+            {
+              "content": "In the evenings I watch TV",
+              "isCorrect": true
+            },
+            {
+              "content": "In the evenings I see TV",
+              "isCorrect": false
+            },
+            {
+              "content": "In the afternoons I watch TV",
+              "isCorrect": false
+            },
+            {
+              "content": "In the afternoons I see TV",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jak jest po angielsku kuchnia?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "kitchen",
+              "isCorrect": true
+            },
+            {
+              "content": "kettler",
+              "isCorrect": false
+            },
+            {
+              "content": "kitchenroom",
+              "isCorrect": false
+            },
+            {
+              "content": "carpet",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jak jest po angielsku dywan?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "carpet",
+              "isCorrect": true
+            },
+            {
+              "content": "kettler",
+              "isCorrect": false
+            },
+            {
+              "content": "diwane",
+              "isCorrect": false
+            },
+            {
+              "content": "floormate",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "content": "Jak jest po angielsku podłoga?",
+          "difficulty": 1,
+          "answers": [
+            {
+              "content": "floor",
+              "isCorrect": true
+            },
+            {
+              "content": "ceiling",
+              "isCorrect": false
+            },
+            {
+              "content": "basement",
+              "isCorrect": false
+            },
+            {
+              "content": "flor",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
