@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.teachinghelper.AttemptDetailsActivity
-import com.example.teachinghelper.Entities.AnswersHistory
+import com.example.teachinghelper.Database.Models.*
 import com.example.teachinghelper.R
-import com.example.teachinghelper.readmodel.AttemptDetails
 import kotlinx.android.synthetic.main.activity_questions.view.*
 
 class AnswersSummaryListAdapter internal constructor(

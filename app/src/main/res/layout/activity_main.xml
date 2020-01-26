@@ -27,15 +27,6 @@
             android:textColor="@android:color/background_light" />
 
         <Button
-            android:id="@+id/StatisticsButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/round_button"
-            android:layout_marginBottom="30dp"
-            android:text="Statystyka"
-            android:textColor="@android:color/background_light" />
-
-        <Button
             android:id="@+id/SettingsButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"

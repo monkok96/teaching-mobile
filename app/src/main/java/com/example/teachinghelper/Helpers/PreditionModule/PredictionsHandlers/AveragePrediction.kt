@@ -1,7 +1,7 @@
 package com.example.teachinghelper.Helpers.PreditionModule.PredictionsHandlers
 
 import com.example.teachinghelper.Helpers.PreditionModule.IPredictionHandler
-import com.example.teachinghelper.readmodel.PredictionAnswersHistory
+import com.example.teachinghelper.Database.Models.PredictionAnswersHistory
 
 class AveragePrediction: IPredictionHandler {
     override fun get(history: List<PredictionAnswersHistory>, count: Int): Map<Int, Int> {
